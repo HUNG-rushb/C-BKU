@@ -1,0 +1,7 @@
+# depslib dependency file v1.0
+1602848669 source:c:\users\dell\desktop\my c++ code\extra_week_1\main.cpp
+	<iostream>
+	<string>
+	<sstream>
+	<assert.h>
+

@@ -1,0 +1,6 @@
+# depslib dependency file v1.0
+1608042151 source:c:\users\dell\desktop\my c++ code\0_bku_tree\main.cpp
+	<iostream>
+	<queue>
+	<vector>
+

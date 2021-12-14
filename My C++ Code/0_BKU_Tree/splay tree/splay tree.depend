@@ -1,0 +1,7 @@
+# depslib dependency file v1.0
+1607581649 source:c:\users\dell\desktop\splay tree\main.cpp
+	<iostream>
+	<stdlib.h>
+	<queue>
+	<math.h>
+

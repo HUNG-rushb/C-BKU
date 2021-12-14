@@ -1,0 +1,13 @@
+# depslib dependency file v1.0
+1606067834 source:c:\users\dell\desktop\my c++ code\0_bus_system\bus_system\main.cpp
+	<iostream>
+	<iomanip>
+	<type_traits>
+	<sstream>
+	<string>
+	<map>
+	<vector>
+	<windows.h>
+	<assert.h>
+	<time.h>
+

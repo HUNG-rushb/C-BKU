@@ -1,0 +1,10 @@
+# depslib dependency file v1.0
+1602872453 source:c:\users\dell\desktop\my c++ code\extra_week_1\polynomial\main.cpp
+	"SLinkedList.h"
+
+1602861799 c:\users\dell\desktop\my c++ code\extra_week_1\polynomial\slinkedlist.h
+	<iostream>
+	<string>
+	<sstream>
+	<assert.h>
+

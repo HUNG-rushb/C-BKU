@@ -1,0 +1,12 @@
+# depslib dependency file v1.0
+1593539982 source:c:\users\dell\desktop\chap_3_exercises\main.cpp
+	<iostream>
+	"GradeBook.h"
+
+1593540004 c:\users\dell\desktop\chap_3_exercises\gradebook.h
+	<string>
+
+1593540101 source:c:\users\dell\desktop\chap_3_exercises\gradebook.cpp
+	<iostream>
+	"GradeBook.h"
+
