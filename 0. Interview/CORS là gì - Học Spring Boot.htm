@@ -1,0 +1,999 @@
+<!DOCTYPE html>
+<html lang="en-US" >
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <!-- Adds scripts in heads -->
+    <meta name='robots' content='index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1' />
+
+	<!-- This site is optimized with the Yoast SEO plugin v18.5.1 - https://yoast.com/wordpress/plugins/seo/ -->
+	<title>CORS là gì? - Học Spring Boot</title>
+	<meta name="description" content="Cors là gì? Vai trò của Cors? Nó là một nhu cầu rất thông dụng với các developer web đó là truy truy vấn qua API." />
+	<link rel="canonical" href="https://hocspringboot.net/2020/12/25/cors-la-gi/" />
+	<meta property="og:locale" content="en_US" />
+	<meta property="og:type" content="article" />
+	<meta property="og:title" content="CORS là gì? - Học Spring Boot" />
+	<meta property="og:description" content="Cors là gì? Vai trò của Cors? Nó là một nhu cầu rất thông dụng với các developer web đó là truy truy vấn qua API." />
+	<meta property="og:url" content="https://hocspringboot.net/2020/12/25/cors-la-gi/" />
+	<meta property="og:site_name" content="Học Spring Boot" />
+	<meta property="article:published_time" content="2020-12-25T07:53:18+00:00" />
+	<meta property="article:modified_time" content="2020-12-25T07:53:19+00:00" />
+	<meta property="og:image" content="https://hocspringboot.net/wp-content/uploads/2020/12/CORS.png" />
+	<meta property="og:image:width" content="1000" />
+	<meta property="og:image:height" content="500" />
+	<meta property="og:image:type" content="image/png" />
+	<meta name="twitter:card" content="summary_large_image" />
+	<meta name="twitter:label1" content="Written by" />
+	<meta name="twitter:data1" content="Quan Nguyen" />
+	<meta name="twitter:label2" content="Est. reading time" />
+	<meta name="twitter:data2" content="28 minutes" />
+	<script type="application/ld+json" class="yoast-schema-graph">{"@context":"https://schema.org","@graph":[{"@type":"WebSite","@id":"https://hocspringboot.net/#website","url":"https://hocspringboot.net/","name":"Học Spring Boot","description":"Website học Spring Boot","potentialAction":[{"@type":"SearchAction","target":{"@type":"EntryPoint","urlTemplate":"https://hocspringboot.net/?s={search_term_string}"},"query-input":"required name=search_term_string"}],"inLanguage":"en-US"},{"@type":"ImageObject","@id":"https://hocspringboot.net/2020/12/25/cors-la-gi/#primaryimage","inLanguage":"en-US","url":"https://hocspringboot.net/wp-content/uploads/2020/12/CORS.png","contentUrl":"https://hocspringboot.net/wp-content/uploads/2020/12/CORS.png","width":1000,"height":500,"caption":"Cors"},{"@type":"WebPage","@id":"https://hocspringboot.net/2020/12/25/cors-la-gi/#webpage","url":"https://hocspringboot.net/2020/12/25/cors-la-gi/","name":"CORS là gì? - Học Spring Boot","isPartOf":{"@id":"https://hocspringboot.net/#website"},"primaryImageOfPage":{"@id":"https://hocspringboot.net/2020/12/25/cors-la-gi/#primaryimage"},"datePublished":"2020-12-25T07:53:18+00:00","dateModified":"2020-12-25T07:53:19+00:00","author":{"@id":"https://hocspringboot.net/#/schema/person/d1f465aa86df12eb1a7314448190eebe"},"description":"Cors là gì? Vai trò của Cors? Nó là một nhu cầu rất thông dụng với các developer web đó là truy truy vấn qua API.","breadcrumb":{"@id":"https://hocspringboot.net/2020/12/25/cors-la-gi/#breadcrumb"},"inLanguage":"en-US","potentialAction":[{"@type":"ReadAction","target":["https://hocspringboot.net/2020/12/25/cors-la-gi/"]}]},{"@type":"BreadcrumbList","@id":"https://hocspringboot.net/2020/12/25/cors-la-gi/#breadcrumb","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://hocspringboot.net/"},{"@type":"ListItem","position":2,"name":"CORS là gì?"}]},{"@type":"Person","@id":"https://hocspringboot.net/#/schema/person/d1f465aa86df12eb1a7314448190eebe","name":"Quan Nguyen","image":{"@type":"ImageObject","@id":"https://hocspringboot.net/#personlogo","inLanguage":"en-US","url":"https://secure.gravatar.com/avatar/db5f097b0726f3bf8b9574ff26dddea8?s=96&d=mm&r=g","contentUrl":"https://secure.gravatar.com/avatar/db5f097b0726f3bf8b9574ff26dddea8?s=96&d=mm&r=g","caption":"Quan Nguyen"},"sameAs":["http://hocspringboot.net"],"url":"https://hocspringboot.net/author/quan-nguyen/"}]}</script>
+	<!-- / Yoast SEO plugin. -->
+
+
+<link rel='dns-prefetch' href='//s.w.org' />
+<link rel="alternate" type="application/rss+xml" title="Học Spring Boot &raquo; Feed" href="https://hocspringboot.net/feed/" />
+<link rel="alternate" type="application/rss+xml" title="Học Spring Boot &raquo; Comments Feed" href="https://hocspringboot.net/comments/feed/" />
+<link rel="alternate" type="application/rss+xml" title="Học Spring Boot &raquo; CORS là gì? Comments Feed" href="https://hocspringboot.net/2020/12/25/cors-la-gi/feed/" />
+<script type="text/javascript">
+window._wpemojiSettings = {"baseUrl":"https:\/\/s.w.org\/images\/core\/emoji\/13.1.0\/72x72\/","ext":".png","svgUrl":"https:\/\/s.w.org\/images\/core\/emoji\/13.1.0\/svg\/","svgExt":".svg","source":{"concatemoji":"https:\/\/hocspringboot.net\/wp-includes\/js\/wp-emoji-release.min.js?ver=5.9.3"}};
+/*! This file is auto-generated */
+!function(e,a,t){var n,r,o,i=a.createElement("canvas"),p=i.getContext&&i.getContext("2d");function s(e,t){var a=String.fromCharCode;p.clearRect(0,0,i.width,i.height),p.fillText(a.apply(this,e),0,0);e=i.toDataURL();return p.clearRect(0,0,i.width,i.height),p.fillText(a.apply(this,t),0,0),e===i.toDataURL()}function c(e){var t=a.createElement("script");t.src=e,t.defer=t.type="text/javascript",a.getElementsByTagName("head")[0].appendChild(t)}for(o=Array("flag","emoji"),t.supports={everything:!0,everythingExceptFlag:!0},r=0;r<o.length;r++)t.supports[o[r]]=function(e){if(!p||!p.fillText)return!1;switch(p.textBaseline="top",p.font="600 32px Arial",e){case"flag":return s([127987,65039,8205,9895,65039],[127987,65039,8203,9895,65039])?!1:!s([55356,56826,55356,56819],[55356,56826,8203,55356,56819])&&!s([55356,57332,56128,56423,56128,56418,56128,56421,56128,56430,56128,56423,56128,56447],[55356,57332,8203,56128,56423,8203,56128,56418,8203,56128,56421,8203,56128,56430,8203,56128,56423,8203,56128,56447]);case"emoji":return!s([10084,65039,8205,55357,56613],[10084,65039,8203,55357,56613])}return!1}(o[r]),t.supports.everything=t.supports.everything&&t.supports[o[r]],"flag"!==o[r]&&(t.supports.everythingExceptFlag=t.supports.everythingExceptFlag&&t.supports[o[r]]);t.supports.everythingExceptFlag=t.supports.everythingExceptFlag&&!t.supports.flag,t.DOMReady=!1,t.readyCallback=function(){t.DOMReady=!0},t.supports.everything||(n=function(){t.readyCallback()},a.addEventListener?(a.addEventListener("DOMContentLoaded",n,!1),e.addEventListener("load",n,!1)):(e.attachEvent("onload",n),a.attachEvent("onreadystatechange",function(){"complete"===a.readyState&&t.readyCallback()})),(n=t.source||{}).concatemoji?c(n.concatemoji):n.wpemoji&&n.twemoji&&(c(n.twemoji),c(n.wpemoji)))}(window,document,window._wpemojiSettings);
+</script>
+<style type="text/css">
+img.wp-smiley,
+img.emoji {
+	display: inline !important;
+	border: none !important;
+	box-shadow: none !important;
+	height: 1em !important;
+	width: 1em !important;
+	margin: 0 0.07em !important;
+	vertical-align: -0.1em !important;
+	background: none !important;
+	padding: 0 !important;
+}
+</style>
+	<link rel='stylesheet' id='wp-block-library-css'  href='https://hocspringboot.net/wp-includes/css/dist/block-library/style.min.css?ver=5.9.3' type='text/css' media='all' />
+<style id='global-styles-inline-css' type='text/css'>
+body{--wp--preset--color--black: #000000;--wp--preset--color--cyan-bluish-gray: #abb8c3;--wp--preset--color--white: #ffffff;--wp--preset--color--pale-pink: #f78da7;--wp--preset--color--vivid-red: #cf2e2e;--wp--preset--color--luminous-vivid-orange: #ff6900;--wp--preset--color--luminous-vivid-amber: #fcb900;--wp--preset--color--light-green-cyan: #7bdcb5;--wp--preset--color--vivid-green-cyan: #00d084;--wp--preset--color--pale-cyan-blue: #8ed1fc;--wp--preset--color--vivid-cyan-blue: #0693e3;--wp--preset--color--vivid-purple: #9b51e0;--wp--preset--gradient--vivid-cyan-blue-to-vivid-purple: linear-gradient(135deg,rgba(6,147,227,1) 0%,rgb(155,81,224) 100%);--wp--preset--gradient--light-green-cyan-to-vivid-green-cyan: linear-gradient(135deg,rgb(122,220,180) 0%,rgb(0,208,130) 100%);--wp--preset--gradient--luminous-vivid-amber-to-luminous-vivid-orange: linear-gradient(135deg,rgba(252,185,0,1) 0%,rgba(255,105,0,1) 100%);--wp--preset--gradient--luminous-vivid-orange-to-vivid-red: linear-gradient(135deg,rgba(255,105,0,1) 0%,rgb(207,46,46) 100%);--wp--preset--gradient--very-light-gray-to-cyan-bluish-gray: linear-gradient(135deg,rgb(238,238,238) 0%,rgb(169,184,195) 100%);--wp--preset--gradient--cool-to-warm-spectrum: linear-gradient(135deg,rgb(74,234,220) 0%,rgb(151,120,209) 20%,rgb(207,42,186) 40%,rgb(238,44,130) 60%,rgb(251,105,98) 80%,rgb(254,248,76) 100%);--wp--preset--gradient--blush-light-purple: linear-gradient(135deg,rgb(255,206,236) 0%,rgb(152,150,240) 100%);--wp--preset--gradient--blush-bordeaux: linear-gradient(135deg,rgb(254,205,165) 0%,rgb(254,45,45) 50%,rgb(107,0,62) 100%);--wp--preset--gradient--luminous-dusk: linear-gradient(135deg,rgb(255,203,112) 0%,rgb(199,81,192) 50%,rgb(65,88,208) 100%);--wp--preset--gradient--pale-ocean: linear-gradient(135deg,rgb(255,245,203) 0%,rgb(182,227,212) 50%,rgb(51,167,181) 100%);--wp--preset--gradient--electric-grass: linear-gradient(135deg,rgb(202,248,128) 0%,rgb(113,206,126) 100%);--wp--preset--gradient--midnight: linear-gradient(135deg,rgb(2,3,129) 0%,rgb(40,116,252) 100%);--wp--preset--duotone--dark-grayscale: url('#wp-duotone-dark-grayscale');--wp--preset--duotone--grayscale: url('#wp-duotone-grayscale');--wp--preset--duotone--purple-yellow: url('#wp-duotone-purple-yellow');--wp--preset--duotone--blue-red: url('#wp-duotone-blue-red');--wp--preset--duotone--midnight: url('#wp-duotone-midnight');--wp--preset--duotone--magenta-yellow: url('#wp-duotone-magenta-yellow');--wp--preset--duotone--purple-green: url('#wp-duotone-purple-green');--wp--preset--duotone--blue-orange: url('#wp-duotone-blue-orange');--wp--preset--font-size--small: 13px;--wp--preset--font-size--medium: 20px;--wp--preset--font-size--large: 36px;--wp--preset--font-size--x-large: 42px;}.has-black-color{color: var(--wp--preset--color--black) !important;}.has-cyan-bluish-gray-color{color: var(--wp--preset--color--cyan-bluish-gray) !important;}.has-white-color{color: var(--wp--preset--color--white) !important;}.has-pale-pink-color{color: var(--wp--preset--color--pale-pink) !important;}.has-vivid-red-color{color: var(--wp--preset--color--vivid-red) !important;}.has-luminous-vivid-orange-color{color: var(--wp--preset--color--luminous-vivid-orange) !important;}.has-luminous-vivid-amber-color{color: var(--wp--preset--color--luminous-vivid-amber) !important;}.has-light-green-cyan-color{color: var(--wp--preset--color--light-green-cyan) !important;}.has-vivid-green-cyan-color{color: var(--wp--preset--color--vivid-green-cyan) !important;}.has-pale-cyan-blue-color{color: var(--wp--preset--color--pale-cyan-blue) !important;}.has-vivid-cyan-blue-color{color: var(--wp--preset--color--vivid-cyan-blue) !important;}.has-vivid-purple-color{color: var(--wp--preset--color--vivid-purple) !important;}.has-black-background-color{background-color: var(--wp--preset--color--black) !important;}.has-cyan-bluish-gray-background-color{background-color: var(--wp--preset--color--cyan-bluish-gray) !important;}.has-white-background-color{background-color: var(--wp--preset--color--white) !important;}.has-pale-pink-background-color{background-color: var(--wp--preset--color--pale-pink) !important;}.has-vivid-red-background-color{background-color: var(--wp--preset--color--vivid-red) !important;}.has-luminous-vivid-orange-background-color{background-color: var(--wp--preset--color--luminous-vivid-orange) !important;}.has-luminous-vivid-amber-background-color{background-color: var(--wp--preset--color--luminous-vivid-amber) !important;}.has-light-green-cyan-background-color{background-color: var(--wp--preset--color--light-green-cyan) !important;}.has-vivid-green-cyan-background-color{background-color: var(--wp--preset--color--vivid-green-cyan) !important;}.has-pale-cyan-blue-background-color{background-color: var(--wp--preset--color--pale-cyan-blue) !important;}.has-vivid-cyan-blue-background-color{background-color: var(--wp--preset--color--vivid-cyan-blue) !important;}.has-vivid-purple-background-color{background-color: var(--wp--preset--color--vivid-purple) !important;}.has-black-border-color{border-color: var(--wp--preset--color--black) !important;}.has-cyan-bluish-gray-border-color{border-color: var(--wp--preset--color--cyan-bluish-gray) !important;}.has-white-border-color{border-color: var(--wp--preset--color--white) !important;}.has-pale-pink-border-color{border-color: var(--wp--preset--color--pale-pink) !important;}.has-vivid-red-border-color{border-color: var(--wp--preset--color--vivid-red) !important;}.has-luminous-vivid-orange-border-color{border-color: var(--wp--preset--color--luminous-vivid-orange) !important;}.has-luminous-vivid-amber-border-color{border-color: var(--wp--preset--color--luminous-vivid-amber) !important;}.has-light-green-cyan-border-color{border-color: var(--wp--preset--color--light-green-cyan) !important;}.has-vivid-green-cyan-border-color{border-color: var(--wp--preset--color--vivid-green-cyan) !important;}.has-pale-cyan-blue-border-color{border-color: var(--wp--preset--color--pale-cyan-blue) !important;}.has-vivid-cyan-blue-border-color{border-color: var(--wp--preset--color--vivid-cyan-blue) !important;}.has-vivid-purple-border-color{border-color: var(--wp--preset--color--vivid-purple) !important;}.has-vivid-cyan-blue-to-vivid-purple-gradient-background{background: var(--wp--preset--gradient--vivid-cyan-blue-to-vivid-purple) !important;}.has-light-green-cyan-to-vivid-green-cyan-gradient-background{background: var(--wp--preset--gradient--light-green-cyan-to-vivid-green-cyan) !important;}.has-luminous-vivid-amber-to-luminous-vivid-orange-gradient-background{background: var(--wp--preset--gradient--luminous-vivid-amber-to-luminous-vivid-orange) !important;}.has-luminous-vivid-orange-to-vivid-red-gradient-background{background: var(--wp--preset--gradient--luminous-vivid-orange-to-vivid-red) !important;}.has-very-light-gray-to-cyan-bluish-gray-gradient-background{background: var(--wp--preset--gradient--very-light-gray-to-cyan-bluish-gray) !important;}.has-cool-to-warm-spectrum-gradient-background{background: var(--wp--preset--gradient--cool-to-warm-spectrum) !important;}.has-blush-light-purple-gradient-background{background: var(--wp--preset--gradient--blush-light-purple) !important;}.has-blush-bordeaux-gradient-background{background: var(--wp--preset--gradient--blush-bordeaux) !important;}.has-luminous-dusk-gradient-background{background: var(--wp--preset--gradient--luminous-dusk) !important;}.has-pale-ocean-gradient-background{background: var(--wp--preset--gradient--pale-ocean) !important;}.has-electric-grass-gradient-background{background: var(--wp--preset--gradient--electric-grass) !important;}.has-midnight-gradient-background{background: var(--wp--preset--gradient--midnight) !important;}.has-small-font-size{font-size: var(--wp--preset--font-size--small) !important;}.has-medium-font-size{font-size: var(--wp--preset--font-size--medium) !important;}.has-large-font-size{font-size: var(--wp--preset--font-size--large) !important;}.has-x-large-font-size{font-size: var(--wp--preset--font-size--x-large) !important;}
+</style>
+<link rel='stylesheet' id='ez-icomoon-css'  href='https://hocspringboot.net/wp-content/plugins/easy-table-of-contents/vendor/icomoon/style.min.css?ver=2.0.18' type='text/css' media='all' />
+<link rel='stylesheet' id='ez-toc-css'  href='https://hocspringboot.net/wp-content/plugins/easy-table-of-contents/assets/css/screen.min.css?ver=2.0.18' type='text/css' media='all' />
+<style id='ez-toc-inline-css' type='text/css'>
+div#ez-toc-container p.ez-toc-title {font-size: 120%;}div#ez-toc-container p.ez-toc-title {font-weight: 500;}div#ez-toc-container ul li {font-size: 95%;}
+</style>
+<link rel='stylesheet' id='jlbestblog_style-css'  href='https://hocspringboot.net/wp-content/themes/jl-best-blog/style.css?ver=5.9.3' type='text/css' media='all' />
+<link rel="https://api.w.org/" href="https://hocspringboot.net/wp-json/" /><link rel="alternate" type="application/json" href="https://hocspringboot.net/wp-json/wp/v2/posts/1574" /><link rel="EditURI" type="application/rsd+xml" title="RSD" href="https://hocspringboot.net/xmlrpc.php?rsd" />
+<link rel="wlwmanifest" type="application/wlwmanifest+xml" href="https://hocspringboot.net/wp-includes/wlwmanifest.xml" /> 
+<meta name="generator" content="WordPress 5.9.3" />
+<link rel='shortlink' href='https://hocspringboot.net/?p=1574' />
+<link rel="alternate" type="application/json+oembed" href="https://hocspringboot.net/wp-json/oembed/1.0/embed?url=https%3A%2F%2Fhocspringboot.net%2F2020%2F12%2F25%2Fcors-la-gi%2F" />
+<link rel="alternate" type="text/xml+oembed" href="https://hocspringboot.net/wp-json/oembed/1.0/embed?url=https%3A%2F%2Fhocspringboot.net%2F2020%2F12%2F25%2Fcors-la-gi%2F&#038;format=xml" />
+            <style>
+                .page-numbers {
+                    border: 1px solid #3d3d3d;
+                }
+                .page-numbers:hover {
+                    background-color: #3d3d3d;
+                    text-decoration: none;
+                }
+                .current {
+                    background-color: #3d3d3d;
+                }
+                .dots:hover {
+                    background-color: unset;
+                }
+                .menu-item, .page-item, .page_item {
+                    color: #ffffff;
+                }
+                a {
+                    color: #3d3d3d;
+                }
+                a:hover {
+                    color: #32cd32;
+                }
+                .menu-navigation .menu-item a:hover, .menu-navigation .page-item a:hover, .menu-navigation .page_item a:hover {
+                    color: #32cd32;
+                }
+                .section > h2 a:hover {
+                    color: #32cd32;
+                }
+                .current-menu-item > a {
+                    color: #32cd32;
+                }
+                .menu-navigation .sub-menu, .menu-navigation .children {
+                    background-color: #3d3d3d;
+                }
+                .widget-title {
+                    border-bottom: 2px solid #3d3d3d;
+                }
+                .submit {
+                    border: 2px solid #3d3d3d;
+                    color: #3d3d3d;
+                }
+                .submit:hover {
+                    background-color: #3d3d3d;
+                    border: 2px solid transparent;
+                    color: #ffffff;
+                }
+                .submit:focus:hover {
+                    color: #3d3d3d;
+                }
+                .read-more-button:hover {
+                    background-color: #3d3d3d;
+                }
+                .post-categories a {
+                    border: 1px solid #3d3d3d;
+                }
+                .post-categories a:hover {
+                    background-color: #3d3d3d;
+                }
+                .wp-block-embed-twitter, .wp-block-embed-facebook {
+                    border-bottom: 2px solid #3d3d3d;
+                }
+                                .main-content--section {
+                    max-width: calc( 100% - 300px);
+                }
+                            </style>
+        
+<!-- Facebook Pixel Code -->
+<script type='text/javascript'>
+!function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;
+n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;
+t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,
+document,'script','https://connect.facebook.net/en_US/fbevents.js');
+</script>
+<!-- End Facebook Pixel Code -->
+<script type='text/javascript'>
+  fbq('init', '762890554554556', {}, {
+    "agent": "wordpress-5.9.3-3.0.6"
+});
+</script><script type='text/javascript'>
+  fbq('track', 'PageView', []);
+</script>
+<!-- Facebook Pixel Code -->
+<noscript>
+<img height="1" width="1" style="display:none" alt="fbpx"
+src="https://www.facebook.com/tr?id=762890554554556&ev=PageView&noscript=1" />
+</noscript>
+<!-- End Facebook Pixel Code -->
+<link rel="icon" href="https://hocspringboot.net/wp-content/uploads/2020/04/cropped-Spring-Boot-icon-32x32.png" sizes="32x32" />
+<link rel="icon" href="https://hocspringboot.net/wp-content/uploads/2020/04/cropped-Spring-Boot-icon-192x192.png" sizes="192x192" />
+<link rel="apple-touch-icon" href="https://hocspringboot.net/wp-content/uploads/2020/04/cropped-Spring-Boot-icon-180x180.png" />
+<meta name="msapplication-TileImage" content="https://hocspringboot.net/wp-content/uploads/2020/04/cropped-Spring-Boot-icon-270x270.png" />
+		<style type="text/css" id="wp-custom-css">
+			span.page-numbers.current {
+    color: white;
+}
+input.search-input {
+    border-radius: 5px;
+}
+
+button.search-submit {
+    border-radius: 0 5px 5px 0;
+}		</style>
+		 
+</head>
+<body class="post-template-default single single-post postid-1574 single-format-standard wp-custom-logo" >
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 0 0" width="0" height="0" focusable="false" role="none" style="visibility: hidden; position: absolute; left: -9999px; overflow: hidden;" ><defs><filter id="wp-duotone-dark-grayscale"><feColorMatrix color-interpolation-filters="sRGB" type="matrix" values=" .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 " /><feComponentTransfer color-interpolation-filters="sRGB" ><feFuncR type="table" tableValues="0 0.49803921568627" /><feFuncG type="table" tableValues="0 0.49803921568627" /><feFuncB type="table" tableValues="0 0.49803921568627" /><feFuncA type="table" tableValues="1 1" /></feComponentTransfer><feComposite in2="SourceGraphic" operator="in" /></filter></defs></svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 0 0" width="0" height="0" focusable="false" role="none" style="visibility: hidden; position: absolute; left: -9999px; overflow: hidden;" ><defs><filter id="wp-duotone-grayscale"><feColorMatrix color-interpolation-filters="sRGB" type="matrix" values=" .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 " /><feComponentTransfer color-interpolation-filters="sRGB" ><feFuncR type="table" tableValues="0 1" /><feFuncG type="table" tableValues="0 1" /><feFuncB type="table" tableValues="0 1" /><feFuncA type="table" tableValues="1 1" /></feComponentTransfer><feComposite in2="SourceGraphic" operator="in" /></filter></defs></svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 0 0" width="0" height="0" focusable="false" role="none" style="visibility: hidden; position: absolute; left: -9999px; overflow: hidden;" ><defs><filter id="wp-duotone-purple-yellow"><feColorMatrix color-interpolation-filters="sRGB" type="matrix" values=" .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 " /><feComponentTransfer color-interpolation-filters="sRGB" ><feFuncR type="table" tableValues="0.54901960784314 0.98823529411765" /><feFuncG type="table" tableValues="0 1" /><feFuncB type="table" tableValues="0.71764705882353 0.25490196078431" /><feFuncA type="table" tableValues="1 1" /></feComponentTransfer><feComposite in2="SourceGraphic" operator="in" /></filter></defs></svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 0 0" width="0" height="0" focusable="false" role="none" style="visibility: hidden; position: absolute; left: -9999px; overflow: hidden;" ><defs><filter id="wp-duotone-blue-red"><feColorMatrix color-interpolation-filters="sRGB" type="matrix" values=" .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 " /><feComponentTransfer color-interpolation-filters="sRGB" ><feFuncR type="table" tableValues="0 1" /><feFuncG type="table" tableValues="0 0.27843137254902" /><feFuncB type="table" tableValues="0.5921568627451 0.27843137254902" /><feFuncA type="table" tableValues="1 1" /></feComponentTransfer><feComposite in2="SourceGraphic" operator="in" /></filter></defs></svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 0 0" width="0" height="0" focusable="false" role="none" style="visibility: hidden; position: absolute; left: -9999px; overflow: hidden;" ><defs><filter id="wp-duotone-midnight"><feColorMatrix color-interpolation-filters="sRGB" type="matrix" values=" .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 " /><feComponentTransfer color-interpolation-filters="sRGB" ><feFuncR type="table" tableValues="0 0" /><feFuncG type="table" tableValues="0 0.64705882352941" /><feFuncB type="table" tableValues="0 1" /><feFuncA type="table" tableValues="1 1" /></feComponentTransfer><feComposite in2="SourceGraphic" operator="in" /></filter></defs></svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 0 0" width="0" height="0" focusable="false" role="none" style="visibility: hidden; position: absolute; left: -9999px; overflow: hidden;" ><defs><filter id="wp-duotone-magenta-yellow"><feColorMatrix color-interpolation-filters="sRGB" type="matrix" values=" .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 " /><feComponentTransfer color-interpolation-filters="sRGB" ><feFuncR type="table" tableValues="0.78039215686275 1" /><feFuncG type="table" tableValues="0 0.94901960784314" /><feFuncB type="table" tableValues="0.35294117647059 0.47058823529412" /><feFuncA type="table" tableValues="1 1" /></feComponentTransfer><feComposite in2="SourceGraphic" operator="in" /></filter></defs></svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 0 0" width="0" height="0" focusable="false" role="none" style="visibility: hidden; position: absolute; left: -9999px; overflow: hidden;" ><defs><filter id="wp-duotone-purple-green"><feColorMatrix color-interpolation-filters="sRGB" type="matrix" values=" .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 " /><feComponentTransfer color-interpolation-filters="sRGB" ><feFuncR type="table" tableValues="0.65098039215686 0.40392156862745" /><feFuncG type="table" tableValues="0 1" /><feFuncB type="table" tableValues="0.44705882352941 0.4" /><feFuncA type="table" tableValues="1 1" /></feComponentTransfer><feComposite in2="SourceGraphic" operator="in" /></filter></defs></svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 0 0" width="0" height="0" focusable="false" role="none" style="visibility: hidden; position: absolute; left: -9999px; overflow: hidden;" ><defs><filter id="wp-duotone-blue-orange"><feColorMatrix color-interpolation-filters="sRGB" type="matrix" values=" .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 " /><feComponentTransfer color-interpolation-filters="sRGB" ><feFuncR type="table" tableValues="0.098039215686275 1" /><feFuncG type="table" tableValues="0 0.66274509803922" /><feFuncB type="table" tableValues="0.84705882352941 0.41960784313725" /><feFuncA type="table" tableValues="1 1" /></feComponentTransfer><feComposite in2="SourceGraphic" operator="in" /></filter></defs></svg>    <div class="main-container">
+        <a class="skip-link screen-reader-text" href="#main-content--section">
+        Skip to content</a>
+        <!-- displaying header image depends of page type -->
+         <header class="header">             <!-- Top menu desktop -->
+            <div class="top-menu container">
+                            </div>
+            <!-- mobile navigation -->
+            <div class="mobile-menu-container" style="background-color: #3d3d3d">
+                <button class="mobile-menu-icon" id="mobile-menu-icon">
+                    <span class="mobile-menu-icon-strip"></span>
+                    <span class="mobile-menu-icon-strip"></span>
+                    <span class="mobile-menu-icon-strip"></span>
+                </button>
+            </div>
+            <nav id="navigation" class="menu-navigation mobile-navigation" style="background-color: #3d3d3d">
+                <div class="main-menu-class"><ul id="menu-primary" class="menu"><li id="menu-item-18" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-18"><a href="https://hocspringboot.net/">Trang chủ</a></li>
+<li id="menu-item-493" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-493"><a href="https://hocspringboot.net/category/tong-quan-ve-spring-boot/">Tổng quan</a></li>
+<li id="menu-item-492" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-492"><a href="https://hocspringboot.net/category/deployment-and-ci-cd/">CI/CD</a></li>
+<li id="menu-item-494" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-494"><a href="https://hocspringboot.net/category/testing/">Testing</a></li>
+<li id="menu-item-491" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-491"><a href="https://hocspringboot.net/category/aop/">AOP</a></li>
+<li id="menu-item-495" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-495"><a href="https://hocspringboot.net/category/spring-boot-starters-and-common-configurations/">Configuration</a></li>
+</ul></div>            </nav>
+            <!-- headder title -->
+            <div class="header-title container">
+                <!-- displaying logo -->
+                                    <div class="logo">
+                        <a href="https://hocspringboot.net/" class="custom-logo-link" rel="home"><img width="199" height="51" src="https://hocspringboot.net/wp-content/uploads/2020/04/cropped-Spring-boot-logo.png" class="custom-logo" alt="Học Spring Boot" srcset="https://hocspringboot.net/wp-content/uploads/2020/04/cropped-Spring-boot-logo.png 199w, https://hocspringboot.net/wp-content/uploads/2020/04/cropped-Spring-boot-logo-150x38.png 150w" sizes="(max-width: 199px) 100vw, 199px" /></a>                    </div>
+                                <!-- displaying site title and description -->
+                <div class="title">
+                                <!-- displaying search form -->
+                <form role="search" method="get" class="search-form" action="https://hocspringboot.net/">
+	<input type="search"  class="search-input" placeholder="Search..." value="" name="s" />
+	<button type="submit" class="search-submit"><img src="https://hocspringboot.net/wp-content/themes/jl-best-blog/inc/images/search-icon.svg" alt="search-icon"></button>
+</form>                </div>
+            </div>
+            <!-- desktop navigation -->
+            <nav class="menu-navigation desktop-navigation" style="background-color: #3d3d3d">
+                <div class="main-menu-class"><ul id="menu-primary-1" class="menu"><li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-18"><a href="https://hocspringboot.net/">Trang chủ</a></li>
+<li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-493"><a href="https://hocspringboot.net/category/tong-quan-ve-spring-boot/">Tổng quan</a></li>
+<li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-492"><a href="https://hocspringboot.net/category/deployment-and-ci-cd/">CI/CD</a></li>
+<li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-494"><a href="https://hocspringboot.net/category/testing/">Testing</a></li>
+<li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-491"><a href="https://hocspringboot.net/category/aop/">AOP</a></li>
+<li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-495"><a href="https://hocspringboot.net/category/spring-boot-starters-and-common-configurations/">Configuration</a></li>
+</ul></div>            </nav>
+            <!-- display header image container depends on page type -->
+                        <!-- Top menu mobile -->
+            <div class="top-menu top-menu-mobile container">
+                            </div>
+        </header>
+<div class="content">
+
+    <div class="main-content container">
+        
+    <!-- left column -->
+        <!-- main content -->
+    <main id="main-content--section"
+            class="main-content-section main-content-one-sidebar    ">
+                            <article id="post-1574" class="article article-single post-1574 post type-post status-publish format-standard has-post-thumbnail hentry category-tong-quan-ve-spring-boot">
+                    <div class='image-container image-container-above'><a href='https://hocspringboot.net/2020/12/25/cors-la-gi/'><img width="1000" height="500" src="https://hocspringboot.net/wp-content/uploads/2020/12/CORS.png" class="attachment-full size-full wp-post-image" alt="post-image" sizes="(max-width: 1000px) 100vw, 1000px" srcset="https://hocspringboot.net/wp-content/uploads/2020/12/CORS.png 1000w, https://hocspringboot.net/wp-content/uploads/2020/12/CORS-300x150.png 300w, https://hocspringboot.net/wp-content/uploads/2020/12/CORS-768x384.png 768w" /></a></div><section class='section full-article-content'>                        <h2><a href='https://hocspringboot.net/2020/12/25/cors-la-gi/'> CORS là gì? </a></h2>
+                                                                                <div class="post-categories">
+                                <a href="https://hocspringboot.net/category/tong-quan-ve-spring-boot/" rel="category tag">Tổng quan</a>                            </div>
+                                                        <div class='post-meta'>
+                                <div class='meta-author'><a href='https://hocspringboot.net/author/quan-nguyen/'> Quan Nguyen </a></div>
+                                <div class='meta-date'><a href='https://hocspringboot.net/2020/12'> 25-12-2020 </a></div>
+                            </div>
+                            <div id="ez-toc-container" class="ez-toc-v2_0_18 counter-hierarchy ez-toc-grey">
+<div class="ez-toc-title-container">
+<p class="ez-toc-title">NỘI DUNG B&Agrave;I VIẾT</p>
+<span class="ez-toc-title-toggle"><a class="ez-toc-pull-right ez-toc-btn ez-toc-btn-xs ez-toc-btn-default ez-toc-toggle" style="display: none;"><i class="ez-toc-glyphicon ez-toc-icon-toggle"></i></a></span></div>
+<nav><ul class="ez-toc-list ez-toc-list-level-1"><li class="ez-toc-page-1 ez-toc-heading-level-2"><a class="ez-toc-link ez-toc-heading-1" href="#CORS_la_gi" title="CORS là gì?">CORS là gì?</a><ul class="ez-toc-list-level-3"><li class="ez-toc-heading-level-3"><a class="ez-toc-link ez-toc-heading-2" href="#no_access-control-allow-origin_header_is_present_on_the_requested_resource" title="no ‘access-control-allow-origin’ header is present on the requested resource">no ‘access-control-allow-origin’ header is present on the requested resource</a></li></ul></li><li class="ez-toc-page-1 ez-toc-heading-level-2"><a class="ez-toc-link ez-toc-heading-3" href="#Tai_sao_chung_ta_can_CORS" title="Tại sao chúng ta cần CORS">Tại sao chúng ta cần CORS</a></li><li class="ez-toc-page-1 ez-toc-heading-level-2"><a class="ez-toc-link ez-toc-heading-4" href="#Cac_truy_van_dung_CORS" title="Các truy vấn dùng CORS">Các truy vấn dùng CORS</a></li><li class="ez-toc-page-1 ez-toc-heading-level-2"><a class="ez-toc-link ez-toc-heading-5" href="#Lam_the_nao_de_su_dung_CORS" title="Làm thế nào để sử dụng CORS">Làm thế nào để sử dụng CORS</a></li><li class="ez-toc-page-1 ez-toc-heading-level-2"><a class="ez-toc-link ez-toc-heading-6" href="#Tao_truy_van_CORS_bang_XMLHttpRequest" title="Tạo truy vấn CORS bằng XMLHttpRequest">Tạo truy vấn CORS bằng XMLHttpRequest</a><ul class="ez-toc-list-level-3"><li class="ez-toc-heading-level-3"><a class="ez-toc-link ez-toc-heading-7" href="#Tao_truy_van" title="Tạo truy vấn">Tạo truy vấn</a></li><li class="ez-toc-page-1 ez-toc-heading-level-3"><a class="ez-toc-link ez-toc-heading-8" href="#withCredentials" title="withCredentials">withCredentials</a></li><li class="ez-toc-page-1 ez-toc-heading-level-3"><a class="ez-toc-link ez-toc-heading-9" href="#Gui_truy_van" title="Gửi truy vấn">Gửi truy vấn</a></li></ul></li><li class="ez-toc-page-1 ez-toc-heading-level-2"><a class="ez-toc-link ez-toc-heading-10" href="#Tao_truy_van_CORS_bang_jQuery" title="Tạo truy vấn CORS bằng jQuery">Tạo truy vấn CORS bằng jQuery</a></li><li class="ez-toc-page-1 ez-toc-heading-level-2"><a class="ez-toc-link ez-toc-heading-11" href="#Tao_truy_van_CORS_bang_Fetch_API" title="Tạo truy vấn CORS bằng Fetch API">Tạo truy vấn CORS bằng Fetch API</a></li><li class="ez-toc-page-1 ez-toc-heading-level-2"><a class="ez-toc-link ez-toc-heading-12" href="#Cau_hinh_may_chu_ho_tro_CORS" title="Cấu hình máy chủ hỗ trợ CORS">Cấu hình máy chủ hỗ trợ CORS</a><ul class="ez-toc-list-level-3"><li class="ez-toc-heading-level-3"><a class="ez-toc-link ez-toc-heading-13" href="#Doi_voi_truy_van_don_gian" title="Đối với truy vấn đơn giản">Đối với truy vấn đơn giản</a></li><li class="ez-toc-page-1 ez-toc-heading-level-3"><a class="ez-toc-link ez-toc-heading-14" href="#Doi_voi_truy_van_can_preflight" title="Đối với truy vấn cần preflight">Đối với truy vấn cần preflight</a></li></ul></li><li class="ez-toc-page-1 ez-toc-heading-level-2"><a class="ez-toc-link ez-toc-heading-15" href="#Ho_tro_CORS_cua_cac_framework" title="Hỗ trợ CORS của các framework">Hỗ trợ CORS của các framework</a><ul class="ez-toc-list-level-3"><li class="ez-toc-heading-level-3"><a class="ez-toc-link ez-toc-heading-16" href="#Laravel_CORS" title="Laravel CORS">Laravel CORS</a></li><li class="ez-toc-page-1 ez-toc-heading-level-3"><a class="ez-toc-link ez-toc-heading-17" href="#CORS_Nodejs" title="CORS Nodejs">CORS Nodejs</a></li><li class="ez-toc-page-1 ez-toc-heading-level-3"><a class="ez-toc-link ez-toc-heading-18" href="#Ruby_on_Rails" title="Ruby on Rails">Ruby on Rails</a></li><li class="ez-toc-page-1 ez-toc-heading-level-3"><a class="ez-toc-link ez-toc-heading-19" href="#Django" title="Django">Django</a></li><li class="ez-toc-page-1 ez-toc-heading-level-3"><a class="ez-toc-link ez-toc-heading-20" href="#Flask" title="Flask">Flask</a></li></ul></li><li class="ez-toc-page-1 ez-toc-heading-level-2"><a class="ez-toc-link ez-toc-heading-21" href="#Ket_luan" title="Kết luận">Kết luận</a></li></ul></nav></div>
+
+<p>Cors là gì? Vai trò của Cors? Nó là một nhu cầu rất thông dụng với các developer web đó là truy truy vấn qua API. Tuy nhiên, việc truy vấn và xử lý dữ liệu từ API nhiều khi cũng rất khó khăn.</p>
+
+
+
+<p>Rất nhiều lập trình viên phải đối mặt với các vấn đề liên quan đến CORS. Vậy CORS là gì? Và lý do tại sao chúng ta cần CORS?</p>
+
+
+
+<h2 id="ftoc-heading-1"><span class="ez-toc-section" id="CORS_la_gi"></span><strong>CORS là gì?</strong><span class="ez-toc-section-end"></span></h2>
+
+
+
+<p><strong>CORS</strong> là một cơ chế cho phép nhiều tài nguyên khác nhau (fonts, Javascript, v.v…) của một trang web có thể được truy vấn từ domain khác với domain của trang đó. <strong>CORS</strong> là viết tắt của từ Cross-origin resource sharing.</p>
+
+
+
+<h3 id="ftoc-heading-2"><span class="ez-toc-section" id="no_access-control-allow-origin_header_is_present_on_the_requested_resource"></span><strong>no ‘access-control-allow-origin’ header is present on the requested resource</strong><span class="ez-toc-section-end"></span></h3>
+
+
+
+<p>Đây chính là lỗi CORS policy mà bất cứ lập trình viên nào cũng sẽ gặp phải. Khi call API tới server mà không có header&nbsp;<code>Access-Control-Allow-Origin</code>&nbsp;hoặc giá trị của nó không hợp lệ thì sẽ phát sinh lỗi này và không lấy được dữ liệu từ API. Cách khắc phục lỗi trên là phải config enable&nbsp;<strong>CORS</strong>&nbsp;lên để phía client có thể gọi được dữ liệu. Các bạn có thể tham khảo cách để enable với các ngôn ngữ tại đây&nbsp;<a href="https://www.w3.org/wiki/CORS_Enabled" target="_blank" rel="noreferrer noopener">Enable CORS on Server</a></p>
+
+
+
+<h2 id="_tai-sao-chung-ta-can-cors-0"><span class="ez-toc-section" id="Tai_sao_chung_ta_can_CORS"></span><strong>Tại sao chúng ta cần CORS</strong><span class="ez-toc-section-end"></span></h2>
+
+
+
+<p>CORS được sinh ra là vì&nbsp;<a href="https://www.w3.org/Security/wiki/Same_Origin_Policy" target="_blank" rel="noreferrer noopener">same-origin policy</a>, là một chính sách liên quan đến bảo mật được cài đặt vào toàn bộ các trình duyệt hiện nay. Chính sách này ngăn chặn việc truy cập tài nguyên của các domain khác một cách vô tội vạ.</p>
+
+
+
+<p>Ta có ví dụ một kịch bản như sau:</p>
+
+
+
+<ul><li>Bạn truy cập một trang web có mã độc. Trang web đó sử dụng Javascript để truy cập tin nhắn Facebook của bạn ở địa chỉ&nbsp;<code>https://facebook.com/messages</code>.</li><li>Nếu bạn đã đăng nhập Facebook từ trước rồi. Nếu không có same-origin policy, trang web độc hại kia có thể thoải mái lấy dữ liệu của bạn và bất cứ điều gì chúng muốn.</li></ul>
+
+
+
+<p>Same-origin policy chính là để ngăn chặn những kịch bản như trên để bảo vệ người dùng, giúp an toàn hơn khi lướt web. Bạn có thể thử trên web console và sẽ nhận được lỗi ngay:</p>
+
+
+
+<pre class="wp-block-preformatted">$.get('https://facebook.com/messages')
+Access to XMLHttpRequest at 'https://facebook.com/messages' from
+origin 'xxx' has been blocked by CORS policy: No
+'Access-Control-Allow-Origin' header is present on the requested
+resource.</pre>
+
+
+
+<p>Truy cập URL trên từ bất kỳ domain nào ngoài&nbsp;<code>facebook.com</code>&nbsp;bạn cũng sẽ nhận được lỗi như vậy. Đó chính là nhờ same-origin policy.</p>
+
+
+
+<p>Thế nhưng trong thế giới web, lập trình viên thường xuyên phải thực hiện truy vấn đến các domain khác, đặc biệt là khi làm việc với các API.</p>
+
+
+
+<p>Đó là lúc chúng ta cần đến&nbsp;<strong>CORS</strong>.&nbsp;<strong>CORS</strong>&nbsp;sử dụng các HTTP header để “thông báo” cho trình duyệt rằng, một ứng dụng web chạy ở origin này (thường là domain này) có thể truy cập được các tài nguyên ở origin khác (domain khác).</p>
+
+
+
+<p>Một ứng dụng web sẽ thực hiện truy vấn HTTP cross-origin nếu nó yêu cầu đến các tài nguyên ở origin khác với origin nó đang chạy (khác giao thức, domain, port). Sự khác biệt về giao thức ở đây là khác biệt kiểu như HTTP với FTP chứ không phải HTTP và HTTPS (dù nhiều trình duyệt không cho phép trộn lẫn các tài nguyên truy cập bằng HTTP và HTTPS nhưng đó là vấn đề khác, không liên quan đến CORS).</p>
+
+
+
+<div class="wp-block-image"><figure class="aligncenter"><img src="https://topdev.vn/blog/wp-content/uploads/2019/10/cors-la-gi.png" alt="cors là gì" class="wp-image-22566"/></figure></div>
+
+
+
+<p>Các trường hợp cần đến CORS rất phổ biến trong thực tế. Một ví dụ rất điển hình như sau: một ứng dụng web chạy ở domain&nbsp;<code>foo.com</code>&nbsp;và nó cần truy vấn đến&nbsp;<code>bar.com</code>&nbsp;để lấy một vài dữ liệu (thường được thực hiện bởi JavaScript bằng cách sử dụng&nbsp;<a href="https://developer.mozilla.org/en-US/docs/Web/API/XMLHttpRequest" target="_blank" rel="noreferrer noopener">XMLHttpRequest</a>).</p>
+
+
+
+<p>Các trình duyệt đều cài đặt same-origin policy và tuân thủ nó rất chặt chẽ. Cài đặt XMLHttpRequest và kể cả&nbsp;<a href="https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API" target="_blank" rel="noreferrer noopener">Fetch API</a>&nbsp;cũng đều tuân thủ chính sách này. Do đó những truy vấn như ở trên sẽ không thu được kết quả gì, trừ khi máy chủ trả về response có các header CORS phù hợp.</p>
+
+
+
+<p>Như vậy, bằng việc sử dụng CORS, chúng ta có thể thúc đẩy việc giao tiếp trong ứng dụng web dễ dàng hơn rất nhiều.</p>
+
+
+
+<h2 id="_cac-truy-van-dung-cors-1"><span class="ez-toc-section" id="Cac_truy_van_dung_CORS"></span><strong>Các truy vấn dùng CORS</strong><span class="ez-toc-section-end"></span></h2>
+
+
+
+<p>Các truy vấn sau bắt buộc phải sử dụng CORS, theo tiêu chuẩn&nbsp;<a href="https://fetch.spec.whatwg.org/#http-cors-protocol" target="_blank" rel="noreferrer noopener">quốc tế</a>.</p>
+
+
+
+<ul><li>Các truy vấn bằng XMLHttpRequest hoặc Fetch API đến một domain khác.</li><li><a href="https://developer.mozilla.org/en-US/docs/Web/API/WebGL_API/Tutorial/Using_textures_in_WebGL" target="_blank" rel="noreferrer noopener">WebGL Texture</a></li><li>Ảnh, video được vẽ vào canvas sử dụng <a href="https://developer.mozilla.org/en-US/docs/Web/API/CanvasRenderingContext2D/drawImage" target="_blank" rel="noreferrer noopener"><code>drawImage</code></a>.</li><li>Web fonts truy vấn đến domain khác qua <code>@fontface</code> của CSS, trong đó trang web chỉ có thể sử dụng font dạng True Type nếu được cho phép.</li></ul>
+
+
+
+<h2 id="_lam-the-nao-de-su-dung-cors-2"><span class="ez-toc-section" id="Lam_the_nao_de_su_dung_CORS"></span><strong>Làm thế nào để sử dụng CORS</strong><span class="ez-toc-section-end"></span></h2>
+
+
+
+<p>Một hiểu lầm khá phổ biến, nhất là với các lập trình viên mới làm việc với API lại được làm việc với API của các hãng lớn, tài liệu đầy đủ, đó là cho rằng CORS là công việc của frontend. Nhưng thực ra CORS hoàn toàn là <a href="https://topdev.vn/blog/lo-trinh-tro-thanh-backend-developer/">công việc của backend</a>.</p>
+
+
+
+<p>Về phía máy chủ, sau khi có được thông tin về nguồn gốc của truy vấn, nó có thể lựa chọn không phải hồi truy vấn đó, trả về lỗi hoặc trả về dữ liệu cần thiết. Trong trường hợp trả về dữ liệu, máy chủ cần thiết lập các HTTP header sao cho trình duyệt hiểu rằng truy vấn đó đã được chấp nhận.</p>
+
+
+
+<p>Như vậy, chúng ta có thể thấy rằng, CORS giúp thúc đấy quá trình trao đổi dữ liệu giữa trình duyệt và máy chủ. CORS hoàn toàn không có liên quan gì đến việc trao đổi trực tiếp giữa ứng dụng web mà một máy chủ web khác, ví dụ backend của ứng dụng đó truy cập đến tài nguyên trên một origin khác, nó cũng không cần đến CORS.</p>
+
+
+
+<h2 id="_tao-truy-van-cors-bang-xmlhttprequest-3"><span class="ez-toc-section" id="Tao_truy_van_CORS_bang_XMLHttpRequest"></span><strong>Tạo truy vấn CORS bằng XMLHttpRequest</strong><span class="ez-toc-section-end"></span></h2>
+
+
+
+<p>Trong phần này chúng ta sẽ tìm hiểu cách tạo ra các truy vấn CORS bằng JavaScript. CORS được hỗ trợ bởi hầu hết các trình duyệt hiện đại. Riêng với IE, nó chỉ hỗ trợ từ IE 8 trở lên mà thôi.</p>
+
+
+
+<h3><img loading="lazy" alt="cors là gì" width="1006" height="467" src="https://topdev.vn/blog/wp-content/uploads/2019/10/cors-la-gi1.png" srcset="https://topdev.vn/blog/wp-content/uploads/2019/10/cors-la-gi1.png 1006w, https://topdev.vn/blog/wp-content/uploads/2019/10/cors-la-gi1-300x139.png 300w, https://topdev.vn/blog/wp-content/uploads/2019/10/cors-la-gi1-768x357.png 768w, https://topdev.vn/blog/wp-content/uploads/2019/10/cors-la-gi1-696x323.png 696w, https://topdev.vn/blog/wp-content/uploads/2019/10/cors-la-gi1-905x420.png 905w"></h3>
+
+
+
+<h3 id="_tao-truy-van-4"><span class="ez-toc-section" id="Tao_truy_van"></span>Tạo truy vấn<span class="ez-toc-section-end"></span></h3>
+
+
+
+<p>Các trình duyệt Chrome, Firefox, Safari đều sử dụng version mới của XMLHttpRequest do đó việc truy vấn CORS diễn ra hết sức thuận lợi. IE thì sử dụng XDomainRequest, nó hoạt động gần giống với XMLHttpRequest nhưng có nhiều hạn chế hơn.</p>
+
+
+
+<p>Chúng ta có thể bắt đầu bằng cách tạo ra các object cần thiết. Dưới đây là một đoạn code như thế:</p>
+
+
+
+<pre class="wp-block-preformatted">const createCORSRequest = (method, url) =&gt; {
+    let xhr = new XMLHttpRequest();
+    if ('withCredentials' in xhr) {
+        // Kiểm tra XMLHttpRequest object có thuộc tính
+		// withCredentials hay không
+        // Thuộc tính này chỉ có ở XMLHttpRequest2
+        xhr.open(method, url, true);
+    } else if (typeof XDomainRequest != 'undefined') {
+        // Kiểm tra XDomainRequest
+        // Đây là đối tượng chỉ có ở IE và
+		// là cách để IE thực hiện truy vấn CORS
+        xhr = new XDomainRequest();
+        xhr.open(method, url);
+    } else {
+        xhr = null;
+    }
+    return xhr;
+}
+
+const request = createCORSRequest('GET', 
+	'https://jsonplaceholder.typicode.com/posts/1');
+if (!request) {
+    throw new Error('CORS is not supported');
+}</pre>
+
+
+
+<p>Sau khi tạo được đối tượng XMLHttpRequest rồi thì chúng ta cần một số event handler, trong trường hợp này, chúng ta chỉ cần quan tâm 2 event&nbsp;<code>onload</code>&nbsp;và&nbsp;<code>onerror</code>&nbsp;là đủ. Ngoài ra còn một số event khác như&nbsp;<code>ontimeout</code>,&nbsp;<code>onprogress</code>&nbsp;không được sử dụng nhiều lắm.</p>
+
+
+
+<pre class="wp-block-preformatted">request.onload = () =&gt; {
+    const responseText = request.responseText;
+    console.log(responseText);
+}
+request.onerror = () =&gt; {
+    console.log('Error');
+}</pre>
+
+
+
+<p>Thực ra các trình duyệt khác nhau lại có cách cài đặt rất khác nhau với event&nbsp;<code>onerror</code>. Ví dụ, Firefox trả về status là 0 và&nbsp;<code>statusText</code>&nbsp;luôn rỗng với mọi lỗi. Ngoài ra, các trình duyệt cũng thường không cho phép truy cập đến nội dung cụ thể của lỗi đã xảy ra, chúng ta chỉ biết rằng đã có lỗi mà thôi.</p>
+
+
+
+<h3 id="_withcredentials-5"><span class="ez-toc-section" id="withCredentials"></span>withCredentials<span class="ez-toc-section-end"></span></h3>
+
+
+
+<p>Mặc định, các truy vấn CORS không gửi hoặc thiết lập bất cứ cookie nào trên trình duyệt. Nếu muốn sử dụng cookie trong truy vấn đó, chúng ta phải đặt thuộc tính&nbsp;<code>withCredentials</code>&nbsp;của truy vấn bằng&nbsp;<code>true</code>:</p>
+
+
+
+<pre class="wp-block-preformatted">xhr.withCredentials = true;</pre>
+
+
+
+<p>Tuy nhiên, đó cũng mới chỉ là một nửa mà thôi. Nửa còn lại thuộc về phía máy chủ, đó là HTTP header&nbsp;<code>Access-Control-Allow-Credentials</code>&nbsp;phải là true (chúng ta sẽ tìm hiểu ở phần sau).</p>
+
+
+
+<p>Với giá trị&nbsp;<code>withCredentials</code>&nbsp;bằng&nbsp;<code>true</code>, cookie sẽ được tự động thêm vào cũng như thiết lập nếu có phản hồi từ máy chủ. Lưu ý rằng, cookie trong trường hợp này là third-party cookie và việc lưu trữ, truy cập cookie vẫn hoàn toàn thuân theo same-origin policy, do đó, chúng ta không thể truy cập cookie bằng&nbsp;<code>document.cookie</code>&nbsp;được. Nó hoàn toàn được xử lý tự động bởi trình duyệt.</p>
+
+
+
+<h3 id="_gui-truy-van-6"><span class="ez-toc-section" id="Gui_truy_van"></span>Gửi truy vấn<span class="ez-toc-section-end"></span></h3>
+
+
+
+<p>Sau khi mọi việc đã hoàn tất, việc cuối cùng chúng ta cần làm là gửi truy vấn đi nữa mà thôi:</p>
+
+
+
+<pre class="wp-block-preformatted">request.send();</pre>
+
+
+
+<p>Lúc này truy vấn sẽ được gửi đến máy chủ, và nếu máy chủ đó chấp nhận CORS thì nó sẽ trả về response tương ứng. Hoạt động của truy vấn lúc này hoàn toàn giống với truy vấn có chúng origin thông thường.</p>
+
+
+
+<h2 id="_tao-truy-van-cors-bang-jquery-7"><span class="ez-toc-section" id="Tao_truy_van_CORS_bang_jQuery"></span><strong>Tạo truy vấn CORS bằng jQuery</strong><span class="ez-toc-section-end"></span></h2>
+
+
+
+<p>Hàm&nbsp;<code>$.ajax</code>&nbsp;của jQuery có thể được sử dụng cho các truy vấn thông thường lẫn truy vấn CORS (cookie cũng được hỗ trợ mặc định). Do đó nếu sử dụng jQuery thì công việc của lập trình viên cũng khá dễ dàng. Tuy nhiên, cần lưu ý một số điều như sau:</p>
+
+
+
+<ul><li>Truy vấn CORS của jQuery không hỗ trợ object XDomainRequest của IE, chúng ta cần sử dụng thêm plugin để hỗ trợ việc này.</li><li>Giá trị&nbsp;<code>$.support.cors</code>&nbsp;sẽ được gán là&nbsp;<code>true</code>&nbsp;nếu trình duyệt hỗ trợ CORS (với IE sẽ là&nbsp;<code>false</code>). Giá trị này có thể được sử dụng để kiểm tra xem CORS có được hỗ trợ hay không.</li></ul>
+
+
+
+<p>Dưới đây là một đoạn code sử dụng jQuery để tạo truy vấn CORS:</p>
+
+
+
+<pre class="wp-block-preformatted">$.ajax({
+	type: 'GET',
+	url: 'https://jsonplaceholder.typicode.com/posts/1',
+	success: data =&gt; {
+		console.log(data);
+	},
+	error: () =&gt; {
+		console.log('Error');
+	}
+})</pre>
+
+
+
+<h2 id="_tao-truy-van-cors-bang-fetch-api-8"><span class="ez-toc-section" id="Tao_truy_van_CORS_bang_Fetch_API"></span><strong>Tạo truy vấn CORS bằng Fetch API</strong><span class="ez-toc-section-end"></span></h2>
+
+
+
+<p>Chúng ta cũng có thể sử dụng Fetch API để tạo truy vấn CORS. Tuy nhiên,&nbsp;<code>fetch</code>&nbsp;mới chỉ xuất hiện từ&nbsp;<a href="https://topdev.vn/blog/meo-voi-javascript-es6-va-thu-thuat-de-lam-cho-code-sach-hon-ngan-hon-va-de-doc-hon-phan-1-2/">ES6</a>&nbsp;nên nhiều trình duyệt vẫn chưa hỗ trợ nó (cụ thể là IE tất cả các phiên bản đều không hỗ trợ).</p>
+
+
+
+<p>Fetch API cho chúng ta một phương thức đơn giản để tạo các truy vấn, và nó đã cài đặt sẵn việc hỗ trợ CORS nên chúng ta cũng có thể thao tác rất đơn giản, giống như jQuery vậy. Tuy nhiên, kết quả trả về của&nbsp;<code>fetch</code>&nbsp;là một Promise do đó các thao tác xử lý kết quả sẽ khác nhiều jQuery.&nbsp;<a href="https://topdev.vn/blog/hoc-gi-trong-jquery/"><em>Xem thêm nên học gì khi dùng jQuery.</em></a></p>
+
+
+
+<p>Lập trình với fetch rất đơn giản, thậm chí còn đơn giản hơn của với jQuery:</p>
+
+
+
+<pre class="wp-block-preformatted">fetch('https://jsonplaceholder.typicode.com/posts/1')
+	.then(response =&gt; response.json())
+	.then(console.log)</pre>
+
+
+
+<h2 id="_cau-hinh-may-chu-ho-tro-cors-9"><span class="ez-toc-section" id="Cau_hinh_may_chu_ho_tro_CORS"></span><strong>Cấu hình máy chủ hỗ trợ CORS</strong><span class="ez-toc-section-end"></span></h2>
+
+
+
+<p>Đây là phần phức tạp nhất, cũng là phần quan trọng nhất đối với CORS. Như đã nói ở trên, thực ra việc hỗ trợ CORS hay không phụ thuộc hoàn toàn vào máy chủ chứ không phải client.</p>
+
+
+
+<p>Có hai loại truy vấn CORS: loại truy vấn “đơn giản” và “không đơn giản”.</p>
+
+
+
+<p>Một truy vấn đơn giản hoàn toàn không cần đến CORS preflight. Một truy vấn sẽ được gọi là đơn giản nếu nó thoả mãn những điều kiện sau:</p>
+
+
+
+<ul><li>Phương thức của truy vấn là một trong các loại&nbsp;<code>GET</code>,&nbsp;<code>HEAD</code>,&nbsp;<code>POST</code>.</li><li>Giá trị của&nbsp;<code>Content-Type</code>&nbsp;phải là một trong số các loại&nbsp;<code>application/x-www-form-urlencoded</code>,&nbsp;<code>multipart/form-data</code>,&nbsp;<code>text/plain</code>.</li><li>Không có event handler nào với event&nbsp;<code>XMLHttpRequest.upload</code>.</li><li>Không sử dụng đối tượng&nbsp;<code>ReadableStream</code>&nbsp;trong truy vấn.</li><li>Các HTTP header sau phải khớp:<ul><li><code>Accept</code></li><li><code>Accept-Language</code></li><li><code>Content-Language</code></li><li><code>Last-Event-ID</code></li></ul></li></ul>
+
+
+
+<p>Những truy vấn này được gọi là “đơn giản” bởi chúng có thể được coi là truy vấn thông thường từ trình duyệt mà không cần đến CORS, giống như submit một form HTML thông thường chẳng hạn.</p>
+
+
+
+<p>Những truy vấn không phải “đơn giản” sẽ là truy vấn không đơn giản, và chúng cần CORS preflight. CORS preflight có nghĩa là trước khi truy vấn được gửi, nó cần phải gửi một truy vấn trước bằng phương thức&nbsp;<code>OPTIONS</code>. Mục đích của truy vấn “preflight” này là nhằm kiểm tra xem truy vấn thực sự có an toàn để gửi và nhận hay không.</p>
+
+
+
+<h3 id="_doi-voi-truy-van-don-gian-10"><span class="ez-toc-section" id="Doi_voi_truy_van_don_gian"></span>Đối với truy vấn đơn giản<span class="ez-toc-section-end"></span></h3>
+
+
+
+<p>Một truy vấn CORS đơn giản như đã nói ở trên, có thể có gói tin HTTP dạng như sau:</p>
+
+
+
+<pre class="wp-block-preformatted">GET /cors HTTP/1.1
+Origin: https://api.topdevvn.com
+Host: api.alice.com
+Accept-Language: en-US
+Connection: keep-alive
+User-Agent: Mozilla/...</pre>
+
+
+
+<p>Với các phương thức khác, gói tin HTTP cũng tương tự như vậy. Lưu ý rằng, một truy vấn CORS hợp lệ luôn luôn có <code>Origin</code> ở trong header. Giá trị của header này hoàn toàn được thiết lập tự động bởi trình duyệt, và không ai có thể thay đổi nó được. Giá trị của header này sẽ bao gồm scheme (<code>http</code>), domain (<code>api.bob.com</code>) và cổng (trong trường hợp dùng cổng mặc định thì không cần, ví dụ http dùng cổng 80). Giá trị của header chính là biểu thị nguồn gốc của truy vấn.</p>
+
+
+
+<p>Ví dụ, Firefox không có header này cho các truy vấn same origin nhưng Chrome và Safari vẫn thêm header nay khi truy vấn same origin nhưng sử dụng các phương thức&nbsp;<code>POST</code>,&nbsp;<code>PUT</code>&nbsp;hoặc&nbsp;<code>DELETE</code>. Đây là một diểm cần lưu ý với các&nbsp;<a href="https://topdev.vn/blog/roadmap-backend-developer/">lập trình viên backend</a>, vì nếu không để ý có thể không thêm origin của chính app trong danh sách các domain được chấp nhận, điều đó khiến cho chính truy vấn same origin lại gặp lỗi.</p>
+
+
+
+<p>Dưới đây là response của máy chủ phản hồi cho một truy vấn CORS hợp lệ:</p>
+
+
+
+<pre class="wp-block-preformatted">Access-Control-Allow-Origin: https://api.topdevvn.com
+Access-Control-Allow-Credentials: true
+Access-Control-Expose-Headers: FooBar</pre>
+
+
+
+<p>Tất cả các header liên quan đến CORS đều có phần đầu tiên là&nbsp;<code>Acess-Control-</code>. Ý nghĩa của từng header như sau:</p>
+
+
+
+<ul><li><code>Access-Control-Allow-Origin</code>&nbsp;(bắt buộc): đây là header phải có trong mọi response cho một truy vấn CORS hợp lệ. Nếu không có header này, truy vấn sẽ bị lỗi, giá trị của nó có thể là giá trị của header&nbsp;<code>Origin</code>&nbsp;được gửi lên hoặc&nbsp;<code>*</code>&nbsp;biểu thị cho mọi origin.</li><li><code>Access-Control-Allow-Credentials</code>&nbsp;(tuỳ chọn): Mặc định, cookie sẽ không được sử dụng trong các truy vấn CORS. Header này sẽ biểu thị giá trị logic rằng có thể sử dụng cookie hay không. Giá trị duy nhất của header này là&nbsp;<code>true</code>. Nếu không muốn sử dụng cookie thì thông thường người ta sẽ bỏ header này trong response chứ không phải đặt giá trị nó là&nbsp;<code>false</code>. Lưu ý rằng, header này chỉ hoạt động nếu phía client cũng đặt giá trị&nbsp;<code>withCredentials&nbsp;=&nbsp;true</code>&nbsp;như đã nói ở phần trước.</li><li><code>Access-Control-Expose-Headers</code>&nbsp;(tuỳ chọn): Một đối tượng XMLHttpRequest có một phương thức&nbsp;<code>getResponseHeader</code>, phương thức này sẽ trả về giá trị của một header cụ thể trong response. Với các truy vấn CORS, phương thức này chỉ có thể truy cập được một số header đơn giản mà thôi. Nếu muốn phương thức này có thể truy cập nhiều header hơn, chúng ta cần đến giá trị của header này. Giá trị của header này là một danh sách các header có thể truy cập được, ngăn cách bằng dấu phẩy.</li></ul>
+
+
+
+<h3 id="_doi-voi-truy-van-can-preflight-11"><span class="ez-toc-section" id="Doi_voi_truy_van_can_preflight"></span>Đối với truy vấn cần preflight<span class="ez-toc-section-end"></span></h3>
+
+
+
+<p>Không phải truy vấn nào cũng là đơn giản do việc trao đổi dữ liệu giữa trình duyệt và máy chủ diễn ra rất đa dạng. Các phương thức&nbsp;<code>PUT</code>&nbsp;hay&nbsp;<code>DELETE</code>&nbsp;cũng thường xuyên được sử dụng. Ngoài ra kiểu dữ liệu&nbsp;<a href="https://topdev.vn/blog/json-la-gi/">JSON</a>&nbsp;(<code>Content-Type:&nbsp;application/json</code>) cũng là lựa chọn của nhiều lập trình viên. Trong những trường hợp như vậy, trước khi truy vấn chính được thực hiện thì một truy vấn gọi là preflight sẽ được gửi đi trước.</p>
+
+
+
+<p>Ở phía frontend, các truy vấn đơn giản hay phức tạp đều trông sẽ giống nhau. Truy vấn preflight hoàn toàn được thực hiện ngầm và trong suốt với người dùng. Truy vấn preflight sẽ được gửi đi trước nhằm xác định xem truy vấn thực sự có thể thực hiện được hay không.</p>
+
+
+
+<p>Sau khi có được phản hồi tích cực, trình duyệt sẽ gửi truy vấn thực sự. Kết quả của truy vấn preflight có thể được cache nên nó không cần phải thực hiện cho mọi truy vấn.</p>
+
+
+
+<p>Dưới đây là một gói tin HTTP cho truy vấn preflight:</p>
+
+
+
+<pre class="wp-block-preformatted">OPTIONS /cors HTTP/1.1
+Origin: https://api.topdevvn.com
+Access-Control-Request-Method: PUT
+Access-Control-Request-Headers: X-Custom-Header
+Host: api.alice.com
+Accept-Language: en-US
+Connection: keep-alive
+User-Agent: Mozilla/...</pre>
+
+
+
+<p>Tương tự như truy vấn đơn giản, truy vấn này cũng tự động được thêm header&nbsp;<code>Origin</code>. Truy vấn preflight sẽ được thực hiện bằng phương thức&nbsp;<code>OPTIONS</code>&nbsp;với một số header đặc thù:</p>
+
+
+
+<ul><li><code>Access-Control-Request-Method</code>: Đây là phương thức HTTP dùng trong truy vấn thực sự. Giá trị của header luôn luôn phải có, ngay cả khi các phương thức đó cũng là phương thức của một truy vấn đơn giản.</li><li><code>Access-Control-Request-Headers</code>: Đây là danh sách (ngăn cách bằng dấu phẩy) các header được thêm vào truy vấn.</li></ul>
+
+
+
+<p>Truy vấn preflight là một cách để hỏi máy chủ rằng, liệu truy vấn thực sự có thể thực hiện được hay không. Mà máy chủ dựa vào hai header này để quyết định xem có chấp nhận truy vấn hay không. Nếu chấp nhận, máy chủ sẽ phản hồi như sau:</p>
+
+
+
+<pre class="wp-block-preformatted">Access-Control-Allow-Origin: https://api.topdevvn.com
+Access-Control-Allow-Methods: GET, POST, PUT
+Access-Control-Allow-Headers: X-Custom-Header
+Content-Type: text/html; charset=utf-8</pre>
+
+
+
+<p>Trong đó, response có thể có những header như sau:</p>
+
+
+
+<ul><li><code>Access-Control-Allow-Origin</code>&nbsp;(bắt buộc): Tương tự như trường hợp truy vấn CORS đơn giản.</li><li><code>Access-Control-Allow-Methods</code>&nbsp;(bắt buộc): Là một danh sách (ngăn cách bằng dấu phẩy) các phương thức HTTP được chấp nhận. Dù truy vấn preflight có hỏi về một phương thức cụ thể của truy vấn tiếp theo, giá trị của header này trong responses có thể bao gồm tất cả các phương thức được chấp nhận.</li><li><code>Access-Control-Allow-Headers</code>&nbsp;(bắt buộc nếu truy vấn có header&nbsp;<code>Access-Control-Request-Headers</code>): Là danh sách các header (ngăn cách bằng dấu phẩy) được hỗ trợ. Tương tự như header trước, giá trị của header này cũng có thể bao gồm tất cả các header được chấp nhận.</li><li><code>Access-Control-Allow-Credentials</code>&nbsp;(tuỳ chọn): Tương tự như trường hợp truy vấn CORS đơn giản.</li><li><code>Access-Control-Max-Age</code>&nbsp;(tuỳ chọn): Truy vấn preflight không nhất thiết phải được thực hiện cho mọi truy vấn, mà kết quả của nó có thể cache được. Giá trị của header này chính là số giây mà giá trị của truy vấn preflight có thể được cache.</li></ul>
+
+
+
+<p>Một khi truy vấn preflight có được phản hồi và được chấp nhận, trình duyệt sẽ thực hiện truy vấn thực sự. Truy vấn lúc này tương tự như truy vấn CORS đơn giản và quá trình xử lý cũng như phản hồi hoàn toàn tương tự như vậy.</p>
+
+
+
+<p>Về phía client, nếu trong trường hợp không thực hiện được truy vấn, event&nbsp;<code>onerror</code>&nbsp;sẽ được gọi. Tuy nhiên, như đã nó ở trên, trình duyệt cũng không thể truy cập được nhiều thông tin về lỗi đó, chỉ đơn giản là biết có lỗi mà thôi.</p>
+
+
+
+<h2 id="_ho-tro-cors-cua-cac-framework-12"><span class="ez-toc-section" id="Ho_tro_CORS_cua_cac_framework"></span><strong>Hỗ trợ CORS của các framework</strong><span class="ez-toc-section-end"></span></h2>
+
+
+
+<h3 id="ftoc-heading-16"><span class="ez-toc-section" id="Laravel_CORS"></span><strong>Laravel CORS</strong><span class="ez-toc-section-end"></span></h3>
+
+
+
+<p>Khi chúng ta code vài ứng dụng dưới local mà có connect tới Laravel backed, thì bạn sẽ nhận cái thông báo error CORS ngay. Vì vậy cần tạo một&nbsp;<a href="https://topdev.vn/blog/middleware-la-gi/">middleware</a>&nbsp;sau:</p>
+
+
+
+<pre class="wp-block-preformatted">$ php artisan make:middleware Cors</pre>
+
+
+
+<p>Sau đó update header trong&nbsp;<code><strong>app/Http/Middleware/Cors.php</strong></code></p>
+
+
+
+<pre class="wp-block-preformatted">&lt;?php
+namespace App\Http\Middleware;
+use Closure;
+class Cors
+{
+  public function handle($request, Closure $next)
+  {
+    return $next($request)
+      -&gt;header(‘Access-Control-Allow-Origin’, ‘*’)
+      -&gt;header(‘Access-Control-Allow-Methods’, ‘GET, POST, PUT, DELETE, OPTIONS’)
+      -&gt;header(‘Access-Control-Allow-Headers’, ‘X-Requested-With, Content-Type, X-Token-Auth, Authorization’);
+  }
+}</pre>
+
+
+
+<p>Sau đó, đăng ký middleware trong&nbsp;<code><strong>app/Http/kernel.php</strong></code></p>
+
+
+
+<pre class="wp-block-preformatted">protected $routeMiddleware = [
+  ‘auth’ =&gt; \App\Http\Middleware\Authenticate::class,
+  ‘auth.basic’ =&gt; \Illuminate\Auth\Middleware\AuthenticateWithBasicAuth::class,
+  ‘guest’ =&gt; \App\Http\Middleware\RedirectIfAuthenticated::class,
+  ‘cors’ =&gt; \App\Http\Middleware\Cors::class, // &lt;-- thêm vào hàng này
+ ];</pre>
+
+
+
+<p>Nếu bạn muốn bật CORS bất kỳ route nào, chỉ cần add middleware này trong route registration. Ngoài ra bạn có thể dùng packgage ngoài tại&nbsp;<a href="https://github.com/barryvdh/laravel-cors">barryvdh/<strong>laravel-cors</strong></a>.</p>
+
+
+
+<h3 id="ftoc-heading-17"><span class="ez-toc-section" id="CORS_Nodejs"></span><strong>CORS Nodejs</strong><span class="ez-toc-section-end"></span></h3>
+
+
+
+<p>Chúng ta sử dụng dòng code dưới đây để set một header trên response của bạn để bật CORS:</p>
+
+
+
+<pre class="wp-block-preformatted">res.header("Access-Control-Allow-Origin", "*");</pre>
+
+
+
+<p>Bật CORS cho toàn bộ resource trên server</p>
+
+
+
+<pre class="wp-block-preformatted">app.use(function(req, res, next) {
+  res.header("Access-Control-Allow-Origin", "*");
+  res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+  next();
+});</pre>
+
+
+
+<p>Chỉ định file nào đó</p>
+
+
+
+<pre class="wp-block-preformatted">app.get('/file', function(req, res){
+  var file = __dirname + '/file.zip';
+  res.download(file); // Set disposition and send it.
+});</pre>
+
+
+
+<p>Ví dụ đầy đủ:</p>
+
+
+
+<pre class="wp-block-preformatted">var express = require('express');
+var app = express();
+app.use(function(req, res, next) {
+  res.header("Access-Control-Allow-Origin", "*");
+  res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+  next();
+});
+app.get('/', function (req, res) {
+  var data = {
+    "SmartPhone": [
+      "iPhone",
+      "Samsung"    ]
+  };
+  res.json(data);
+});
+app.get('/file', function(req, res){
+  var file = __dirname + '/file.zip';
+  res.download(file); // Set disposition and send it.
+});</pre>
+
+
+
+<h3 id="_ruby-on-rails-13"><span class="ez-toc-section" id="Ruby_on_Rails"></span><strong>Ruby on Rails</strong><span class="ez-toc-section-end"></span></h3>
+
+
+
+<p>Ruby on Rails cho phép chúng ta thiết lập cũng như thay đổi các header trong response khá dễ dàng, do đó, muốn chấp nhận truy vấn CORS, chúng ta có thể đơn giản là làm như sau:</p>
+
+
+
+<pre class="wp-block-preformatted">skip_before_filter :verify_authenticity_token
+before_action :cors_preflight_check
+after_action :cors_set_access_control_headers
+
+def cors_set_access_control_headers
+  headers["Access-Control-Allow-Origin"] = "*"
+  headers["Access-Control-Allow-Methods"] = "GET, POST"
+  headers["Access-Control-Max-Age"] = "1728000"
+end
+
+def cors_preflight_check
+  headers["Access-Control-Allow-Origin"] = "*"
+  headers["Access-Control-Allow-Methods"] = "GET, POST"
+  headers["Access-Control-Allow-Headers"] =
+    "X-Requested-With, X-Prototype-Version"
+  headers["Access-Control-Max-Age"] = "1728000"
+end</pre>
+
+
+
+<h3 id="_django-14"><span class="ez-toc-section" id="Django"></span><strong>Django</strong><span class="ez-toc-section-end"></span></h3>
+
+
+
+<p>Với Django chúng ta phải sử dụng thêm một package, đó là&nbsp;<a href="https://github.com/ottoyiu/django-cors-headers" target="_blank" rel="noreferrer noopener">Django CORS headers</a>. Package này sẽ giúp chúng ta thiết lập các header cần thiết cho một truy vấn CORS, đồng thời cho chúng ta khả năng cấu hình URL nào cho phép CORS, URL nào thì không.</p>
+
+
+
+<p>Với package này, chúng ta có thể cấu hình sao cho chỉ có API mới hỗ trợ CORS như sau:</p>
+
+
+
+<pre class="wp-block-preformatted">CORS_ORIGIN_ALLOW_ALL = True
+CORS_URLS_REGEX = r'^/api/v1/.*$'</pre>
+
+
+
+<p>Ngoài ra còn rất nhiều cấu hình khác nữa, cho phép chúng ta chỉ chấp nhận truy vấn CORS từ một vài origin nhất định chẳng hạn (<code>CORS_ORIGIN_REGEX_WHITELIST</code>). Nội dung chi tiết xin mới các bạn xem cụ thể tại README của package đó.</p>
+
+
+
+<h3 id="_flask-15"><span class="ez-toc-section" id="Flask"></span><strong>Flask</strong><span class="ez-toc-section-end"></span></h3>
+
+
+
+<p>Tương tự như Django, với Flask, chúng ta cũng phải sử dụng thêm một package, đó là&nbsp;<a href="https://flask-cors.readthedocs.io/en/latest/" target="_blank" rel="noreferrer noopener">Flask-CORS</a>&nbsp;mới có thể chấp nhận các truy vấn CORS được.</p>
+
+
+
+<pre class="wp-block-preformatted">from flask import Flask
+from flask.ext.cors import CORS, cross_origin
+
+
+app = Flask(__name__)
+app.config['SECRET_KEY'] = 'The quick brown fox jumps over the lazy dog'
+app.config['CORS_HEADERS'] = 'Content-Type'
+
+cors = CORS(app, resources={r'/foo/*': {'origins': '*'}})
+
+
+@app.route('/foo')
+@cross_origin()
+def foo():
+	return 'Hello, world! CORS works'
+
+
+if __name__ == '__main__':
+	app.run()</pre>
+
+
+
+<h2 id="_ket-luan-16"><span class="ez-toc-section" id="Ket_luan"></span><strong>Kết luận</strong><span class="ez-toc-section-end"></span></h2>
+
+
+
+<p>Trên đây là tất cả những gì cơ bản để bạn biết CORS là gì, cách nó giúp các ứng dụng web dễ dàng hơn trong việc trao đổi thông tin cũng như hiển thị nội dung, tăng khả năng tương tác giữa các dịch vụ trên Internet. Hy vọng bài viết giúp ích cho mọi người trong quá trình làm việc.</p>
+
+
+
+<p>Nguồn: <a href="https://topdev.vn/blog/cors-la-gi/" target="_blank" rel="noreferrer noopener">https://topdev.vn/blog/cors-la-gi/</a></p>
+</section></article>                    <!-- post navigation -->
+                    <div class="prev-next-post-navigation">
+                                                    <div class="prev-post-link post-link">
+                                &laquo; <a href="https://hocspringboot.net/2020/12/25/csrf-la-gi/" rel="prev">Previous</a>                            </div>
+                                                                            <div class="next-post-link post-link">
+                                <a href="https://hocspringboot.net/2020/12/25/jpa-tong-quan-cac-khai-niem-co-ban/" rel="next">Next</a> &raquo;                            </div>
+                                            </div>
+                    	<div id="respond" class="comment-respond">
+		<h3 id="reply-title" class="comment-reply-title">Leave a Reply <small><a rel="nofollow" id="cancel-comment-reply-link" href="/2020/12/25/cors-la-gi/#respond" style="display:none;">Cancel reply</a></small></h3><form action="https://hocspringboot.net/wp-comments-post.php" method="post" id="commentform" class="comment-form"><p class="comment-notes"><span id="email-notes">Your email address will not be published.</span> <span class="required-field-message" aria-hidden="true">Required fields are marked <span class="required" aria-hidden="true">*</span></span></p><p class="comment-form-comment"><label for="comment">Comment <span class="required" aria-hidden="true">*</span></label> <textarea id="comment" name="comment" cols="45" rows="8" maxlength="65525" required="required"></textarea></p><p class="comment-form-author"><label for="author">Name <span class="required" aria-hidden="true">*</span></label> <input id="author" name="author" type="text" value="" size="30" maxlength="245" required="required" /></p>
+<p class="comment-form-email"><label for="email">Email <span class="required" aria-hidden="true">*</span></label> <input id="email" name="email" type="text" value="" size="30" maxlength="100" aria-describedby="email-notes" required="required" /></p>
+<p class="comment-form-url"><label for="url">Website</label> <input id="url" name="url" type="text" value="" size="30" maxlength="200" /></p>
+<p class="comment-form-cookies-consent"><input id="wp-comment-cookies-consent" name="wp-comment-cookies-consent" type="checkbox" value="yes" /> <label for="wp-comment-cookies-consent">Save my name, email, and website in this browser for the next time I comment.</label></p>
+<p class="form-submit"><input name="submit" type="submit" id="submit" class="submit" value="Post Comment" /> <input type='hidden' name='comment_post_ID' value='1574' id='comment_post_ID' />
+<input type='hidden' name='comment_parent' id='comment_parent' value='0' />
+</p><p style="display: none;"><input type="hidden" id="akismet_comment_nonce" name="akismet_comment_nonce" value="a285f71b84" /></p><p style="display: none !important;"><label>&#916;<textarea name="ak_hp_textarea" cols="45" rows="8" maxlength="100"></textarea></label><input type="hidden" id="ak_js_1" name="ak_js" value="198"/><script>document.getElementById( "ak_js_1" ).setAttribute( "value", ( new Date() ).getTime() );</script></p></form>	</div><!-- #respond -->
+	    </main>
+    <!-- right column -->
+                <aside class="column column-right">
+                <div id="block-14" class="widget widget_block widget_media_image">
+<figure class="wp-block-image size-large is-resized"><a href="https://bit.ly/sukiencodegym" target="_blank"><img loading="lazy" src="https://hocspringboot.net/wp-content/uploads/2022/01/an-toan-thong-tin-mang-hieu-pc-ha-trung-hieu-codegym-4-1-1024x1024.jpg" alt="" class="wp-image-2525" width="258" height="258" srcset="https://hocspringboot.net/wp-content/uploads/2022/01/an-toan-thong-tin-mang-hieu-pc-ha-trung-hieu-codegym-4-1-1024x1024.jpg 1024w, https://hocspringboot.net/wp-content/uploads/2022/01/an-toan-thong-tin-mang-hieu-pc-ha-trung-hieu-codegym-4-1-300x300.jpg 300w, https://hocspringboot.net/wp-content/uploads/2022/01/an-toan-thong-tin-mang-hieu-pc-ha-trung-hieu-codegym-4-1-150x150.jpg 150w, https://hocspringboot.net/wp-content/uploads/2022/01/an-toan-thong-tin-mang-hieu-pc-ha-trung-hieu-codegym-4-1-768x768.jpg 768w, https://hocspringboot.net/wp-content/uploads/2022/01/an-toan-thong-tin-mang-hieu-pc-ha-trung-hieu-codegym-4-1-1536x1536.jpg 1536w, https://hocspringboot.net/wp-content/uploads/2022/01/an-toan-thong-tin-mang-hieu-pc-ha-trung-hieu-codegym-4-1-2048x2048.jpg 2048w" sizes="(max-width: 258px) 100vw, 258px" /></a></figure>
+</div><div id="media_image-14" class="widget widget_media_image"><a href="https://online.codegym.vn/khoa-hoc-nhap-mon-lap-trinh-voi-javascript-mien-phi/" target="_blank" rel="noopener"><img width="900" height="900" src="https://hocspringboot.net/wp-content/uploads/2021/11/javacript-mien-phi.png" class="image wp-image-2519  attachment-full size-full" alt="javascript miễn phí" loading="lazy" style="max-width: 100%; height: auto;" srcset="https://hocspringboot.net/wp-content/uploads/2021/11/javacript-mien-phi.png 900w, https://hocspringboot.net/wp-content/uploads/2021/11/javacript-mien-phi-300x300.png 300w, https://hocspringboot.net/wp-content/uploads/2021/11/javacript-mien-phi-150x150.png 150w, https://hocspringboot.net/wp-content/uploads/2021/11/javacript-mien-phi-768x768.png 768w" sizes="(max-width: 900px) 100vw, 900px" /></a></div><div id="media_image-18" class="widget widget_media_image"><a href="https://online.codegym.vn/khoa-hoc-html-css-mien-phi-cho-nguoi-moi-bat-dau/" target="_blank" rel="noopener"><img width="900" height="900" src="https://hocspringboot.net/wp-content/uploads/2021/11/htm-css-mien-phi.png" class="image wp-image-2518  attachment-full size-full" alt="html/css online miễn phí" loading="lazy" style="max-width: 100%; height: auto;" srcset="https://hocspringboot.net/wp-content/uploads/2021/11/htm-css-mien-phi.png 900w, https://hocspringboot.net/wp-content/uploads/2021/11/htm-css-mien-phi-300x300.png 300w, https://hocspringboot.net/wp-content/uploads/2021/11/htm-css-mien-phi-150x150.png 150w, https://hocspringboot.net/wp-content/uploads/2021/11/htm-css-mien-phi-768x768.png 768w" sizes="(max-width: 900px) 100vw, 900px" /></a></div><div id="media_image-16" class="widget widget_media_image"><a href="https://online.codegym.vn/khoa-hoc-nhap-mon-git-va-github-mien-phi/" target="_blank" rel="noopener"><img width="900" height="900" src="https://hocspringboot.net/wp-content/uploads/2021/11/git-github-mien-phi.png" class="image wp-image-2517  attachment-full size-full" alt="git và github online miễn phí" loading="lazy" style="max-width: 100%; height: auto;" srcset="https://hocspringboot.net/wp-content/uploads/2021/11/git-github-mien-phi.png 900w, https://hocspringboot.net/wp-content/uploads/2021/11/git-github-mien-phi-300x300.png 300w, https://hocspringboot.net/wp-content/uploads/2021/11/git-github-mien-phi-150x150.png 150w, https://hocspringboot.net/wp-content/uploads/2021/11/git-github-mien-phi-768x768.png 768w" sizes="(max-width: 900px) 100vw, 900px" /></a></div><div id="block-11" class="widget widget_block widget_media_image">
+<figure class="wp-block-image size-full"><a href="https://online.codegym.vn/khoa-hoc-bootstrap-mien-phi/" target="_blank"><img loading="lazy" width="900" height="900" src="https://hocspringboot.net/wp-content/uploads/2021/11/bootstrap-mien-phi.png" alt="bootstrap online miễn phí" class="wp-image-2516" srcset="https://hocspringboot.net/wp-content/uploads/2021/11/bootstrap-mien-phi.png 900w, https://hocspringboot.net/wp-content/uploads/2021/11/bootstrap-mien-phi-300x300.png 300w, https://hocspringboot.net/wp-content/uploads/2021/11/bootstrap-mien-phi-150x150.png 150w, https://hocspringboot.net/wp-content/uploads/2021/11/bootstrap-mien-phi-768x768.png 768w" sizes="(max-width: 900px) 100vw, 900px" /></a></figure>
+</div>
+		<div id="recent-posts-6" class="widget widget_recent_entries">
+		<h3 class="widget-title">Bài viết mới nhất</h3>
+		<ul>
+											<li>
+					<a href="https://hocspringboot.net/2021/10/03/update-application-trong-docker/">Update application trong Docker</a>
+									</li>
+											<li>
+					<a href="https://hocspringboot.net/2021/10/03/ung-dung-mau-ve-docker/">Ứng dụng mẫu về Docker</a>
+									</li>
+											<li>
+					<a href="https://hocspringboot.net/2021/10/03/huong-dan-su-dung-docker-co-ban/">Hướng dẫn sử dụng Docker cơ bản</a>
+									</li>
+											<li>
+					<a href="https://hocspringboot.net/2021/10/01/nhung-kien-thuc-co-ban-ve-docker/">Những kiến thức cơ bản về Docker</a>
+									</li>
+											<li>
+					<a href="https://hocspringboot.net/2021/10/01/cach-cai-dat-vertx-trong-spring/">Cách cài đặt Vertx trong Spring</a>
+									</li>
+					</ul>
+
+		</div><div id="media_image-7" class="widget widget_media_image"><h3 class="widget-title">Website học lập trình miễn phí</h3><a href="https://hocjava.com/" target="_blank" rel="noopener"><img width="300" height="300" src="https://hocspringboot.net/wp-content/uploads/2020/10/Java.jpg" class="image wp-image-500  attachment-full size-full" alt="Java" loading="lazy" style="max-width: 100%; height: auto;" title="tài liệu học lập trình" srcset="https://hocspringboot.net/wp-content/uploads/2020/10/Java.jpg 300w, https://hocspringboot.net/wp-content/uploads/2020/10/Java-150x150.jpg 150w" sizes="(max-width: 300px) 100vw, 300px" /></a></div><div id="media_image-8" class="widget widget_media_image"><a href="http://hocphp.net/" target="_blank" rel="noopener"><img width="300" height="300" src="https://hocspringboot.net/wp-content/uploads/2020/10/php.jpg" class="image wp-image-501  attachment-full size-full" alt="PHP" loading="lazy" style="max-width: 100%; height: auto;" srcset="https://hocspringboot.net/wp-content/uploads/2020/10/php.jpg 300w, https://hocspringboot.net/wp-content/uploads/2020/10/php-150x150.jpg 150w" sizes="(max-width: 300px) 100vw, 300px" /></a></div><div id="media_image-9" class="widget widget_media_image"><a href="https://hocjavascript.net/" target="_blank" rel="noopener"><img width="300" height="300" src="https://hocspringboot.net/wp-content/uploads/2020/10/java-script.jpg" class="image wp-image-502  attachment-full size-full" alt="JS" loading="lazy" style="max-width: 100%; height: auto;" srcset="https://hocspringboot.net/wp-content/uploads/2020/10/java-script.jpg 300w, https://hocspringboot.net/wp-content/uploads/2020/10/java-script-150x150.jpg 150w" sizes="(max-width: 300px) 100vw, 300px" /></a></div><div id="media_image-10" class="widget widget_media_image"><a href="https://hoclaravel.net/" target="_blank" rel="noopener"><img width="300" height="300" src="https://hocspringboot.net/wp-content/uploads/2020/10/Laravel.jpg" class="image wp-image-503  attachment-full size-full" alt="Laravel" loading="lazy" style="max-width: 100%; height: auto;" srcset="https://hocspringboot.net/wp-content/uploads/2020/10/Laravel.jpg 300w, https://hocspringboot.net/wp-content/uploads/2020/10/Laravel-150x150.jpg 150w" sizes="(max-width: 300px) 100vw, 300px" /></a></div><div id="media_image-11" class="widget widget_media_image"><a href="https://hocspringmvc.net/" target="_blank" rel="noopener"><img width="300" height="300" src="https://hocspringboot.net/wp-content/uploads/2020/10/spring-mvc.jpg" class="image wp-image-504  attachment-full size-full" alt="spring mvc" loading="lazy" style="max-width: 100%; height: auto;" srcset="https://hocspringboot.net/wp-content/uploads/2020/10/spring-mvc.jpg 300w, https://hocspringboot.net/wp-content/uploads/2020/10/spring-mvc-150x150.jpg 150w" sizes="(max-width: 300px) 100vw, 300px" /></a></div><div id="media_image-6" class="widget widget_media_image"><h3 class="widget-title">CodingBootcamp</h3><a href="https://codegym.vn/khoa-hoc-lap-trinh-danh-cho-nguoi-moi-bat-dau/" target="_blank" rel="noopener"><img width="300" height="300" src="https://hocspringboot.net/wp-content/uploads/2020/10/codingbootcamp.jpg" class="image wp-image-499  attachment-full size-full" alt="" loading="lazy" style="max-width: 100%; height: auto;" title="CodingBootcamp" srcset="https://hocspringboot.net/wp-content/uploads/2020/10/codingbootcamp.jpg 300w, https://hocspringboot.net/wp-content/uploads/2020/10/codingbootcamp-150x150.jpg 150w" sizes="(max-width: 300px) 100vw, 300px" /></a></div><div id="text-7" class="widget widget_text"><h3 class="widget-title">Tài liệu học lập trình miễn phí</h3>			<div class="textwidget"><blockquote class="wp-embedded-content" data-secret="r4sMQQFqo6"><p><a href="https://pages.codegym.vn/cam-nang-lap-trinh-can-ban-cho-nguoi-moi-bat-dau/">Cẩm nang Lập trình căn bản cho người mới bắt đầu</a></p></blockquote>
+<p><iframe class="wp-embedded-content" sandbox="allow-scripts" security="restricted" style="position: absolute; clip: rect(1px, 1px, 1px, 1px);" title="&#8220;Cẩm nang Lập trình căn bản cho người mới bắt đầu&#8221; &#8212; CodeGym Pages" src="https://pages.codegym.vn/cam-nang-lap-trinh-can-ban-cho-nguoi-moi-bat-dau/embed/#?secret=r4sMQQFqo6" data-secret="r4sMQQFqo6" frameborder="0" marginwidth="0" marginheight="0" scrolling="no"></iframe></p>
+<p>&nbsp;</p>
+<blockquote class="wp-embedded-content" data-secret="DapujeeSnu"><p><a href="https://pages.codegym.vn/tong-hop-kien-thuc-java-can-ban/">Tổng hợp kiến thức Java căn bản</a></p></blockquote>
+<p><iframe class="wp-embedded-content" sandbox="allow-scripts" security="restricted" style="position: absolute; clip: rect(1px, 1px, 1px, 1px);" title="&#8220;Tổng hợp kiến thức Java căn bản&#8221; &#8212; CodeGym Pages" src="https://pages.codegym.vn/tong-hop-kien-thuc-java-can-ban/embed/#?secret=DapujeeSnu" data-secret="DapujeeSnu" frameborder="0" marginwidth="0" marginheight="0" scrolling="no"></iframe></p>
+<p>&nbsp;</p>
+<blockquote class="wp-embedded-content" data-secret="Mf9Y2WN2Gp"><p><a href="https://pages.codegym.vn/tai-lieu-thinkjava-cho-nguoi-moi-hoc/">Tài liệu THINK JAVA cho người mới học</a></p></blockquote>
+<p><iframe class="wp-embedded-content" sandbox="allow-scripts" security="restricted" style="position: absolute; clip: rect(1px, 1px, 1px, 1px);" title="&#8220;Tài liệu THINK JAVA cho người mới học&#8221; &#8212; CodeGym Pages" src="https://pages.codegym.vn/tai-lieu-thinkjava-cho-nguoi-moi-hoc/embed/#?secret=Mf9Y2WN2Gp" data-secret="Mf9Y2WN2Gp" frameborder="0" marginwidth="0" marginheight="0" scrolling="no"></iframe></p>
+<p>&nbsp;</p>
+<blockquote class="wp-embedded-content" data-secret="bLTqGa7AJ2"><p><a href="https://pages.codegym.vn/tai-lieu-python-co-ban-python-cho-nguoi-moi-bat-dau/">Tài liệu Python cơ bản &#8211; Python cho người mới bắt đầu</a></p></blockquote>
+<p><iframe class="wp-embedded-content" sandbox="allow-scripts" security="restricted" style="position: absolute; clip: rect(1px, 1px, 1px, 1px);" title="&#8220;Tài liệu Python cơ bản &#8211; Python cho người mới bắt đầu&#8221; &#8212; CodeGym Pages" src="https://pages.codegym.vn/tai-lieu-python-co-ban-python-cho-nguoi-moi-bat-dau/embed/#?secret=bLTqGa7AJ2" data-secret="bLTqGa7AJ2" frameborder="0" marginwidth="0" marginheight="0" scrolling="no"></iframe></p>
+<p>&nbsp;</p>
+<blockquote class="wp-embedded-content" data-secret="6Mz54bNa9i"><p><a href="https://pages.codegym.vn/tong-hop-kien-thuc-php-can-ban-chi-trong-1-trang-giay/">Tổng hợp kiến thức PHP căn bản &#8211; Chỉ trong 01 trang giấy</a></p></blockquote>
+<p><iframe class="wp-embedded-content" sandbox="allow-scripts" security="restricted" style="position: absolute; clip: rect(1px, 1px, 1px, 1px);" title="&#8220;Tổng hợp kiến thức PHP căn bản &#8211; Chỉ trong 01 trang giấy&#8221; &#8212; CodeGym Pages" src="https://pages.codegym.vn/tong-hop-kien-thuc-php-can-ban-chi-trong-1-trang-giay/embed/#?secret=6Mz54bNa9i" data-secret="6Mz54bNa9i" frameborder="0" marginwidth="0" marginheight="0" scrolling="no"></iframe></p>
+<p>&nbsp;</p>
+</div>
+		</div>            </aside>
+            </div>
+
+</div>
+
+        <footer class="footer">
+            <div class="container">
+                <!-- Footer sidebars -->
+                <div class="footer-sidebars-section">
+                    <!-- sidebar 1 -->
+                                        <!-- sidebar 2 -->
+                                        <!-- sidebar 3 -->
+                                    </div>
+                <!-- social icons section -->
+                                    <div class="social-icon-section">
+                    <!-- facebook icon -->
+                                            <a href="https://www.facebook.com/profile.php?id=2204181399810938&#038;ref=br_rs">
+                            <div class="social-icon-image facebook-icon"> </div>
+                        </a>
+                                        <!-- instagram icon -->
+                                            <a href="https://www.instagram.com/codegymvietnam/?hl=en">
+                            <div class="social-icon-image instagram-icon"> </div>
+                        </a>
+                                        <!-- twitter icon -->
+                                        <!-- pinterest icon -->
+                                        <!-- youtube icon -->
+                                            <a href="https://www.youtube.com/results?search_query=codegym">
+                            <div class="social-icon-image youtube-icon"> </div>
+                        </a>
+                                        <!-- whatsapp icon -->
+                                        <!-- messenger icon -->
+                                        <!-- linkedin icon -->
+                                        </div>
+                      <!-- end of social icons section -->
+                <div class="footer-links-container">
+                                        <p class="footer-link"><small>Theme made by: </small><a href="https://love-coding.pl/en" class="footer-theme-link">JL</a><small>, 
+                    for:  <a href="https://hocspringboot.net" class="footer-theme-link">Học Spring Boot</a></small></p>
+                </div>
+            </div>
+            
+        </footer>
+
+    </div>      <!-- main-container -->
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-172498233-4"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-172498233-4');
+</script>    <!-- Facebook Pixel Event Code -->
+    <script type='text/javascript'>
+        document.addEventListener( 'wpcf7mailsent', function( event ) {
+        if( "fb_pxl_code" in event.detail.apiResponse){
+          eval(event.detail.apiResponse.fb_pxl_code);
+        }
+      }, false );
+    </script>
+    <!-- End Facebook Pixel Event Code -->
+    <div id='fb-pxl-ajax-code'></div><script type='text/javascript' src='https://hocspringboot.net/wp-content/themes/jl-best-blog/assets/js/script.js?ver=1' id='jlbestblog_script-js'></script>
+<script type='text/javascript' src='https://hocspringboot.net/wp-includes/js/comment-reply.min.js?ver=5.9.3' id='comment-reply-js'></script>
+<script type='text/javascript' src='https://hocspringboot.net/wp-includes/js/jquery/jquery.min.js?ver=3.6.0' id='jquery-core-js'></script>
+<script type='text/javascript' src='https://hocspringboot.net/wp-includes/js/jquery/jquery-migrate.min.js?ver=3.3.2' id='jquery-migrate-js'></script>
+<script type='text/javascript' src='https://hocspringboot.net/wp-content/plugins/easy-table-of-contents/vendor/smooth-scroll/jquery.smooth-scroll.min.js?ver=2.2.0' id='jquery-smooth-scroll-js'></script>
+<script type='text/javascript' src='https://hocspringboot.net/wp-content/plugins/easy-table-of-contents/vendor/js-cookie/js.cookie.min.js?ver=2.2.1' id='js-cookie-js'></script>
+<script type='text/javascript' src='https://hocspringboot.net/wp-content/plugins/easy-table-of-contents/vendor/sticky-kit/jquery.sticky-kit.min.js?ver=1.9.2' id='jquery-sticky-kit-js'></script>
+<script type='text/javascript' id='ez-toc-js-js-extra'>
+/* <![CDATA[ */
+var ezTOC = {"smooth_scroll":"1","visibility_hide_by_default":"","width":"auto","scroll_offset":"30"};
+/* ]]> */
+</script>
+<script type='text/javascript' src='https://hocspringboot.net/wp-content/plugins/easy-table-of-contents/assets/js/front.min.js?ver=2.0.18-1648592641' id='ez-toc-js-js'></script>
+<script type='text/javascript' src='https://hocspringboot.net/wp-includes/js/wp-embed.min.js?ver=5.9.3' id='wp-embed-js'></script>
+ 
+</body>
+</html>
+<!-- Dynamic page generated in 0.532 seconds. -->
+<!-- Cached page generated by WP-Super-Cache on 2022-04-10 17:46:58 -->
+
+<!-- super cache -->
