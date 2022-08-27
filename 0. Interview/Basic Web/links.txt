@@ -1,3 +1,7 @@
 https://frontendmasters.com/guides/front-end-handbook/2018
 
 https://frontendmasters.com/guides/front-end-handbook/2019/
+
+https://www.uml-diagrams.org/
+
+https://www.uml-diagrams.org/index-examples.html
